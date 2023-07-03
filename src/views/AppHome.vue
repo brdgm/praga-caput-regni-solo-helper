@@ -19,6 +19,14 @@
   </p>
   -->
 
+  <ModalDialog id="peterParlerModal" title="Peter Parler" :size-lg="true">
+    <template #body>
+      <img src="@/assets/peter-parler.jpg"/>
+      <p v-html="t('home.peterParler1')"></p>
+      <p v-html="t('home.peterParler2')"></p>
+    </template>
+  </ModalDialog>
+
   <router-link to="/setupGame" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
   <p class="disclaimer">
@@ -33,9 +41,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'AppHome',
+  components: {
+    ModalDialog
+  },
   setup() {
     const { t } = useI18n()
     return { t }
@@ -43,7 +55,22 @@ export default defineComponent({
 })
 </script>
 
+<style>
+a[href='#peterParlerModal'] {
+  color: #000;
+  text-decoration: underline dotted;
+}
+</style>
 <style lang="scss" scoped>
+#peterParlerModal {
+  img {
+    width: 150px;
+    border-radius: 75px;
+    float: right;
+    margin: 15px;
+    filter: drop-shadow(5px 5px 5px #aaa)
+  }
+}
 .disclaimer {
   clear: both;
   margin-top: 4rem;
