@@ -1,6 +1,5 @@
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store } from 'vuex'
-import toggleArrayItem from 'brdgm-commons/src/util/array/toggleArrayItem'
 import { name } from '@/../package.json'
 
 const LOCALSTORAGE_KEY = `${name}.store`
@@ -12,7 +11,7 @@ export interface State {
   turns: Turn[]
 }
 export interface Setup {
-  
+  playerCount: number
 }
 export interface Turn {
   turn: number
@@ -32,7 +31,9 @@ export const store = createStore<State>({
   state: {
     language: "en",
     baseFontSize: 1.0,
-    setup: {},
+    setup: {
+      playerCount: 2
+    },
     turns: []
   },
   mutations: {
