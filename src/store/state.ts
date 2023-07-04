@@ -12,19 +12,29 @@ export const useStateStore = defineStore(`${name}.state`, {
           playerCount: 2,
           botCount: 1,
           playerColors: [PlayerColor.BLUE, PlayerColor.RED, PlayerColor.GREEN, PlayerColor.PURPLE]
-        } as PlayerSetup
-      } as Setup,
-      rounds: [] as Round[]
-    }
+        }
+      },
+      rounds: []
+    } as State
   },
   actions: {
     resetGame() {
       this.rounds = []
+    },
+    storeRound(round : Round) {
+      this.rounds = this.rounds.filter(item => item.round != round.round)
+      this.rounds.push(round)
     }
   },
   persist: true
 })
 
+export interface State {
+  language: string,
+  baseFontSize: number,
+  setup: Setup,
+  rounds: Round[]
+}
 export interface Setup {
   playerSetup: PlayerSetup
 }
@@ -41,6 +51,8 @@ export interface BotRound {
   round: number
   bot: number
   cardDeck: CardDeckPersistence
+  quarryCount: number
+  goldMineCount: number
   upgradeTilePosition: number
   wallTilePosition: number
   buildingTilePosition: number

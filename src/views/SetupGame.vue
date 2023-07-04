@@ -14,9 +14,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import PlayersSetup from '@/components/setup/PlayersSetup.vue'
 import BoardSetup from '@/components/setup/BoardSetup.vue'
+import RoundManager from '@/services/RoundManager'
 
 export default defineComponent({
   name: 'SetupGame',
@@ -27,11 +29,14 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   methods: {
     startGame() : void {
-      
+      const round = new RoundManager(this.state).prepareFirstRound()
+      this.state.resetGame()
+      this.state.storeRound(round)
     }
   }
 })

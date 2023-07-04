@@ -13,6 +13,10 @@ export default class CardDeck {
     this._discard = discard
   }
 
+  public get currentCard() : Card {
+    return this._pile[0]
+  }
+
   public get pile() : readonly Card[] {
     return this._pile
   }
@@ -21,26 +25,21 @@ export default class CardDeck {
     return this._discard
   }
 
-  public isPileEmpty() : boolean {
-    return this._pile.length == 0
-  }
-
   /**
    * Draws a card from the draw pile.
-   * If the pile is empty it is reshuffled before drawing.
+   * If the pile is empty, the discard pile is reshuffled before drawing.
    * @returns Next card
    */
   public draw() : Card {
-    if (this.isPileEmpty()) {
+    const discardCard = this._pile.shift()
+    if (discardCard) {
+      this._discard.push(discardCard)
+    }
+    if (this._pile.length == 0) {
       this._pile = _.shuffle(this._discard)
       this._discard = []
     }
-    const nextCard = this._pile.shift()
-    if (!nextCard) {
-      throw new Error('Card draw pile is empty.')
-    }
-    this._discard.push(nextCard)
-    return nextCard
+    return this.currentCard
   }
 
   /**
