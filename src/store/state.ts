@@ -23,8 +23,11 @@ export const useStateStore = defineStore(`${name}.state`, {
 export interface Setup {
   playerCount: number
 }
-
 export interface Turn {
   turn: number
   round: number
+}
+export interface CardDeckPersistence {
+  pile: string[]
+  discard: string[]
 }
