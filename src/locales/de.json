@@ -22,7 +22,7 @@
       "playerCountItem": "{count} Spieler",
       "playerColor": "Spieler-Farbe | Spieler {index} Farbe",
       "botCount": "Parler Bots",
-      "botCountItem": "{count} Parler Bot | {count} Parler Bots",
+      "botCountItem": "{count} Parler Bot | {count} Parler Bots (experimentell)",
       "botColor": "{name}-Farbe"
     },
     "board": {
@@ -34,8 +34,14 @@
       "noOtherComponents": "Parler benötigt kein Spieltableau und keine weiteren Komponenten."
     }
   },
+  "turnPlayer": {
+    "title": "Spieler | Spieler {player}"
+  },
+  "endOfGame": {
+    "title": "Spielende"
+  },
   "notfound": {
-    "title": "Not Found"
+    "title": "Nicht gefunden"
   },
   "action": {
     "playGame": "Spielen",

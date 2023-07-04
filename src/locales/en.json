@@ -22,7 +22,7 @@
       "playerCountItem": "{count} Player | {count} Players",
       "playerColor": "Player Color | Player {index} Color",
       "botCount": "Parler Bots",
-      "botCountItem": "{count} Parler Bot | {count} Parler Bots",
+      "botCountItem": "{count} Parler Bot | {count} Parler Bots (experimental)",
       "botColor": "{name} Color"
     },
     "board": {
@@ -33,6 +33,12 @@
       "botPawnPlaza": "Place the pawn figure in Peter Parlers color on a plaza of your choice. This is where Peter Parler is planning to build. | For each Parler Bot, place the pawn in its color on a (different) plaza of your choice. This is where the bots are planning to build.",
       "noOtherComponents": "Parler does not need a player board or other components."
     }
+  },
+  "turnPlayer": {
+    "title": "Player | Player {player}"
+  },
+  "endOfGame": {
+    "title": "End of Game"
   },
   "notfound": {
     "title": "Not Found"

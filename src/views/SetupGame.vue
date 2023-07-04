@@ -34,9 +34,10 @@ export default defineComponent({
   },
   methods: {
     startGame() : void {
-      const round = new RoundManager(this.state).prepareFirstRound()
       this.state.resetGame()
+      const round = new RoundManager(this.state).prepareFirstRound()
       this.state.storeRound(round)
+      this.$router.push('/round/1/player/1')
     }
   }
 })
