@@ -35,7 +35,15 @@ export interface PlayerSetup {
 }
 export interface Round {
   round: number
-  cardDecks: CardDeckPersistence[]
+  botRound: BotRound[]
+}
+export interface BotRound {
+  round: number
+  bot: number
+  cardDeck: CardDeckPersistence
+  upgradeTilePosition: number
+  wallTilePosition: number
+  buildingTilePosition: number
 }
 export interface CardDeckPersistence {
   pile: string[]

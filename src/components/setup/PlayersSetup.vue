@@ -32,7 +32,7 @@
   </div>  
   <div class="row mt-3" v-for="botColorIndex in botCount" :key="botColorIndex+playerColors[playerCount+botColorIndex-1]">
     <div class="col-5 col-md-3">
-      <label for="playerCount" class="form-label">{{t('setup.players.botColor', {index:botColorIndex}, botCount)}}</label>
+      <label for="playerCount" class="form-label">{{t('setup.players.botColor', {name:t(`botName.bot${botColorIndex}`)}, botCount)}}</label>
     </div>
     <div class="col-5 col-md-3">
       <PlayerColorPicker :model-value="playerColors[playerCount+botColorIndex-1]" @update:model-value="color => playerColorChanged(playerCount+botColorIndex-1, color)"/>
