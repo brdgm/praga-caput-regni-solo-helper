@@ -1,0 +1,38 @@
+{
+  "gameTitle": "Praga Caput Regni",
+  "home": {
+    "title": "Praga Caput Regni Solo Helper",
+    "play1": "Spiele gegen <a href='#peterParlerModal' data-bs-toggle='modal'>Peter Parler</a>, den Solo Mode-Gegner von <a href='https://boardgamegeek.com/boardgame/308765/praga-caput-regni' target='_blank' rel='noopener'><b>Praga Caput Regni</b></a>.",
+    "play2": "Diese Applikation ersetzt das Kartendeck und stellt Spielhilfen bereit. Es ist möglich gegen mehrere Bots zu spielen.",
+    "peterParler1": "Peter Parler, auf Tschechisch Petr Parléř, war ein tschechisch-deutscher Maurer, der während der Herrschaft Karls IV. und dessen Söhne lebte. Geboren wurde er um das Jahr 1333 in Deutschland und starb 1399 in Prag.",
+    "peterParler2": "Parler arbeitete an den berühmtesten architektonischen Bauwerken seiner Zeit. Darunter der Veitsdom, die Karlsbrücke sowie zahlreiche bürgerliche Gebäude in der Prager Altstadt und der Dom der heiligen Barbara in Kutná Hora.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup Game"
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Spielen",
+    "startGame": "Spiel starten",
+    "next": "Weiter",
+    "nextRound": "Nächste Runde",
+    "abortGame": "Spiel abbrechen",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "endGame": "Spiel beenden",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "cancel": "Abbrechen",
+    "backToHome": "Zurück zum Anfang",
+    "back": "Zurück",
+    "close": "Schließen"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Applikation neu laden",
+    "notice": "Die Applikation wurde aktualisiert - möchtest du die Seite neu laden um die neueste Version zu nutzen?"
+  }
+}
