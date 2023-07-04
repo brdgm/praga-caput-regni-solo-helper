@@ -1,7 +1,9 @@
 <template>
+  <SideBar :navigation-state="navigationState"/>
+
   <h1><PlayerColorDisplay :playerColor="playerColor"/> {{t(`botName.bot${bot}`)}}</h1>
 
-  <p>...</p>
+  <BotActions v-if="navigationState.botRound" :bot-round="navigationState.botRound"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -16,15 +18,19 @@ import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import PlayerColorDisplay from '@/components/structure/PlayerColorDisplay.vue'
+import SideBar from '@/components/round/SideBar.vue'
+import BotActions from '@/components/round/BotActions.vue'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import RoundManager from '@/services/RoundManager'
 
 export default defineComponent({
-  name: 'TurnBot',
+  name: 'RoundBot',
   components: {
     FooterButtons,
-    PlayerColorDisplay
+    PlayerColorDisplay,
+    SideBar,
+    BotActions
   },
   setup() {
     const { t } = useI18n()
@@ -34,9 +40,8 @@ export default defineComponent({
 
     const { round, bot, botRound, playerCount, botCount } = navigationState
     const playerColor = navigationState.getPlayerColor()
-    const lastRound = navigationState.isLastRound()
 
-    return { t, state, round, bot, botRound, playerCount, botCount, playerColor, lastRound }
+    return { t, state, navigationState, round, bot, botRound, playerCount, botCount, playerColor }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -57,7 +62,7 @@ export default defineComponent({
       if (this.bot < this.botCount) {
         this.$router.push(`/round/${this.round}/bot/${this.bot + 1}`)
       }
-      else if (!this.lastRound) {
+      else if (!this.navigationState.isLastRound()) {
         const nextRound = roundManager.prepareNextRound(this.round + 1)
         this.state.storeRound(nextRound)
         this.$router.push(`/round/${this.round + 1}/player/1`)

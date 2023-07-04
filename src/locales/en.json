@@ -34,8 +34,12 @@
       "noOtherComponents": "Parler does not need a player board or other components."
     }
   },
-  "turnPlayer": {
-    "title": "Player | Player {player}"
+  "roundPlayer": {
+    "title": "Player | Player {player}",
+    "takeTurn": "Take your turn."
+  },
+  "sideBar": {
+    "round": "Round"
   },
   "endOfGame": {
     "title": "End of Game"

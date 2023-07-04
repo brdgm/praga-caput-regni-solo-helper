@@ -3,8 +3,8 @@ import AppHome from '@/views/AppHome.vue'
 import EndOfGame from '@/views/EndOfGame.vue'
 import NotFound from '@/views/NotFound.vue'
 import SetupGame from '@/views/SetupGame.vue'
-import TurnPlayer from '@/views/TurnPlayer.vue'
-import TurnBot from '@/views/TurnBot.vue'
+import RoundPlayer from '@/views/RoundPlayer.vue'
+import RoundBot from '@/views/RoundBot.vue'
 import createRouter from 'brdgm-commons/src/util/router/createRouter'
 import { name } from '@/../package.json'
 
@@ -23,13 +23,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/round/:round/player/:player',
-    name: 'TurnPlayer',
-    component: TurnPlayer
+    name: 'RoundPlayer',
+    component: RoundPlayer
   },
   {
     path: '/round/:round/bot/:bot',
-    name: 'TurnBot',
-    component: TurnBot
+    name: 'RoundBot',
+    component: RoundBot
   },
   {
     path: '/endOfGame',
