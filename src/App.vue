@@ -26,14 +26,14 @@
 
   <ModalDialog id="creditsModal" :title="t('footer.credits')">
     <template #body>
-      <h4><a href="https://boardgamegeek.com/boardgame/348554/autobahn" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
+      <h4><a href="https://boardgamegeek.com/boardgame/308765/praga-caput-regni" target="_blank" rel="noopener">{{t('gameTitle')}}</a></h4>
       <dl>
         <dt>Game design</dt>
-        <dd>Fabio Lopiano, Nestore Mangone</dd>
+        <dd>Vladimír Suchý</dd>
         <dt>Graphics design</dt>
-        <dd>Javier González Cava</dd>
+        <dd>Milan Vavroň</dd>
         <dt>Publisher</dt>
-        <dd><a href="https://www.alleycatgames.com/" target="_blank" rel="noopener">Alley Cat Games</a></dd>
+        <dd><a href="https://deliciousgames.org/" target="_blank" rel="noopener">Delicious Games</a></dd>
       </dl>
       <h4 class="border-top pt-3">{{appTitle}}</h4>
       <dl>
