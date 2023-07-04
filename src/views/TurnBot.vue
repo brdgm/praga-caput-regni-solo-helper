@@ -18,6 +18,7 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import PlayerColorDisplay from '@/components/structure/PlayerColorDisplay.vue'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
+import RoundManager from '@/services/RoundManager'
 
 export default defineComponent({
   name: 'TurnBot',
@@ -31,11 +32,11 @@ export default defineComponent({
     const state = useStateStore()
     const navigationState = new NavigationState(route, state)
 
-    const { round, bot, playerCount, botCount } = navigationState
+    const { round, bot, botRound, playerCount, botCount } = navigationState
     const playerColor = navigationState.getPlayerColor()
     const lastRound = navigationState.isLastRound()
 
-    return { t, state, round, bot, playerCount, botCount, playerColor, lastRound }
+    return { t, state, round, bot, botRound, playerCount, botCount, playerColor, lastRound }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -49,10 +50,16 @@ export default defineComponent({
   },
   methods: {
     next() : void {
+      const roundManager = new RoundManager(this.state)
+      if (this.botRound) {
+        roundManager.advanceTilePosition(this.botRound)
+      }
       if (this.bot < this.botCount) {
         this.$router.push(`/round/${this.round}/bot/${this.bot + 1}`)
       }
       else if (!this.lastRound) {
+        const nextRound = roundManager.prepareNextRound(this.round + 1)
+        this.state.storeRound(nextRound)
         this.$router.push(`/round/${this.round + 1}/player/1`)
       }
       else {

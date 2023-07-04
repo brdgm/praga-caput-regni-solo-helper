@@ -82,8 +82,7 @@ export default class RoundManager {
    * @param round Current round
    * @param bot Bot number
    */
-  public advanceTilePosition(round: Round, bot: number) {
-    const botRound = round.botRound[bot-1]
+  public advanceTilePosition(botRound: BotRound) {
     const cardDeck = CardDeck.fromPersistence(botRound.cardDeck)
     const currentCard = cardDeck.currentCard
     if (currentCard.actions.includes(Action.TAKE_UPGRADE_TILE)) {

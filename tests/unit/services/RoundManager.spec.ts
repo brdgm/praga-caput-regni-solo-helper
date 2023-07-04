@@ -79,7 +79,7 @@ describe('services/RoundManager', () => {
       }]}
     ]})
     const roundManager = new RoundManager(state)
-    roundManager.advanceTilePosition(state.rounds[0], 1)
+    roundManager.advanceTilePosition(state.rounds[0].botRound[0])
 
     const botRound = state.rounds[0].botRound[0]
     expect(botRound.upgradeTilePosition).to.eq(3) // incremented
@@ -101,7 +101,7 @@ describe('services/RoundManager', () => {
       }]}
     ]})
     const roundManager = new RoundManager(state)
-    roundManager.advanceTilePosition(state.rounds[0], 1)
+    roundManager.advanceTilePosition(state.rounds[0].botRound[0])
 
     const botRound = state.rounds[0].botRound[0]
     expect(botRound.upgradeTilePosition).to.eq(2)
@@ -123,7 +123,7 @@ describe('services/RoundManager', () => {
       }]}
     ]})
     const roundManager = new RoundManager(state)
-    roundManager.advanceTilePosition(state.rounds[0], 1)
+    roundManager.advanceTilePosition(state.rounds[0].botRound[0])
 
     const botRound = state.rounds[0].botRound[0]
     expect(botRound.upgradeTilePosition).to.eq(2)

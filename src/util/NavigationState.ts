@@ -1,5 +1,5 @@
 import PlayerColor from '@/services/enum/PlayerColor'
-import { State } from '@/store/state'
+import { BotRound, State } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 
 export default class NavigationState {
@@ -7,6 +7,7 @@ export default class NavigationState {
   readonly round : number
   readonly player : number
   readonly bot : number
+  readonly botRound? : BotRound
   readonly playerCount : number
   readonly botCount : number
   readonly playerColors : PlayerColor[]
@@ -21,6 +22,7 @@ export default class NavigationState {
     }
     if (route.name == 'TurnBot') {
       this.bot = parseInt(route.params['bot'] as string)
+      this.botRound = this.getBotRound(state, this.round, this.bot)
     }
     else {
       this.bot = 0
@@ -30,6 +32,13 @@ export default class NavigationState {
     this.playerCount = playerSetup.playerCount
     this.botCount = playerSetup.botCount
     this.playerColors = playerSetup.playerColors
+  }
+
+  private getBotRound(state: State, roundNo: number, bot: number) : BotRound|undefined {
+    const round = state.rounds.find(item => item.round == roundNo)
+    if (round) {
+      return round.botRound.find(item => item.round == roundNo && item.bot == bot)
+    }
   }
 
   public isFirstRound() {
