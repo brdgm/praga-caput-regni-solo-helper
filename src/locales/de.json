@@ -9,7 +9,16 @@
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
-    "title": "Setup Game"
+    "title": "Spielaufbau",
+    "players": {
+      "title": "Spieler",
+      "playerCount": "Menschliche Spieler",
+      "playerCountItem": "{count} Spieler",
+      "playerColor": "Spieler-Farbe | Spieler {index} Farbe",
+      "botCount": "Peter Parler Bots",
+      "botCountItem": "{count} Peter Parler Bot | {count} Peter Parler Bots",
+      "botColor": "Peter Parler-Farbe | Peter Parler {index} Farbe"
+    }
   },
   "notfound": {
     "title": "Not Found"

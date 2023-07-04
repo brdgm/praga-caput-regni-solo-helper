@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { name } from '@/../package.json'
+import PlayerColor from '@/services/enum/PlayerColor'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -7,25 +8,34 @@ export const useStateStore = defineStore(`${name}.state`, {
       language: 'en',
       baseFontSize: 1.0,
       setup: {
-        playerCount: 2
-      },
-      turns: []
+        playerSetup: {
+          playerCount: 2,
+          botCount: 1,
+          playerColors: [PlayerColor.BLUE, PlayerColor.RED, PlayerColor.GREEN, PlayerColor.PURPLE]
+        } as PlayerSetup
+      } as Setup,
+      rounds: [] as Round[]
     }
   },
   actions: {
     resetGame() {
-      this.turns = []
+      this.rounds = []
     }
   },
   persist: true
 })
 
 export interface Setup {
-  playerCount: number
+  playerSetup: PlayerSetup
 }
-export interface Turn {
-  turn: number
+export interface PlayerSetup {
+  playerCount: number
+  botCount: number
+  playerColors: PlayerColor[]
+}
+export interface Round {
   round: number
+  cardDecks: CardDeckPersistence[]
 }
 export interface CardDeckPersistence {
   pile: string[]
