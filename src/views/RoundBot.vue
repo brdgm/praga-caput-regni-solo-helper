@@ -3,7 +3,7 @@
 
   <h1><PlayerColorDisplay :playerColor="playerColor"/> {{t(`botName.bot${bot}`)}}</h1>
 
-  <BotActions v-if="navigationState.botRound" :bot-round="navigationState.botRound"/>
+  <BotActions v-if="navigationState.botRound" :botRound="navigationState.botRound" :navigation-state="navigationState"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}

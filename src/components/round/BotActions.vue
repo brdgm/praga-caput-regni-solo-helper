@@ -8,9 +8,12 @@
           type="action" :name="productionChoiceActions[1]" extension="jpg"/>
     </template>
     <template v-else>
-      <AppIcon class="action" :class="{[action]:true}"
-          type="action" :name="action" extension="jpg"/>
+      <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"/>
     </template>
+  </div>
+  <div class="mt-3">
+    <AppIcon class="actionTileSelectionIcon"
+          type="action-tile" :name="currentCard.actionTileIndex.toString()" extension="jpg"/>
   </div>
 </template>
 
@@ -21,15 +24,30 @@ import { BotRound } from '@/store/state';
 import Card from '@/services/Card';
 import CardDeck from '@/services/CardDeck';
 import Action from '@/services/enum/Action';
+import ConstructBuilding from './action/ConstructBuilding.vue';
+import IncreaseProductionGold from './action/IncreaseProductionGold.vue';
+import IncreaseProductionStone from './action/IncreaseProductionStone.vue';
+import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
+import TakeWallTile from './action/TakeWallTile.vue';
+import NavigationState from '@/util/NavigationState';
 
 export default defineComponent({
   name: 'BotActions',
   components: {
-    AppIcon
+    AppIcon,
+    ConstructBuilding,
+    IncreaseProductionGold,
+    IncreaseProductionStone,
+    TakeUpgradeTile,
+    TakeWallTile
   },
   props: {
     botRound: {
       type: Object as PropType<BotRound>,
+      required: true
+    },
+    navigationState: {
+      type: NavigationState,
       required: true
     }
   },
@@ -49,11 +67,16 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
-.action {
+<style lang="scss">
+.actionIcon {
   width: 300px;
 }
-.action.increase-production-stone, .action.increase-production-gold {
+.actionIcon.increase-production-stone, .actionIcon.increase-production-gold, .actionTileSelectionIcon {
   width: 120px;
+}
+img.actionIcon, img.actionTileSelectionIcon {
+  filter: drop-shadow(2px 2px 3px #888);
+  border-radius: 10px;
+  margin: 0.25rem;
 }
 </style>
