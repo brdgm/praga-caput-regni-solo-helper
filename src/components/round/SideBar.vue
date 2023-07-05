@@ -3,8 +3,8 @@
     <p>{{t('sideBar.round')}} <strong>{{navigationState.round}}</strong> / 16</p>
     <div v-for="(botRound,index) of navigationState.allBotRounds" :key="index">
       <h5 class="mt-3">{{t(`botName.bot${index+1}`)}}</h5>
-      {{botRound.goldMineCount}}<AppIcon class="mineIcon" type="mine" name="gold"/> &nbsp;
-      {{botRound.quarryCount}}<AppIcon class="mineIcon" type="mine" name="stone"/><br/>
+       {{getQuarryCount(botRound)}}<AppIcon class="mineIcon" type="mine" name="stone"/> &nbsp;
+       {{getGoldMineCount(botRound)}}<AppIcon class="mineIcon" type="mine" name="gold"/><br/>
       <div v-for="tileType of tileTypes">
       <TilePosition 
           class="tilePosition" :tileType="tileType"
@@ -26,6 +26,9 @@ import TileType from '@/services/enum/TileType';
 import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues';
 import { BotRound, useStateStore } from '@/store/state';
 import PlayerColor from '@/services/enum/PlayerColor';
+import advanceMine from '@/util/advanceMine'
+import advanceTilePosition from '@/util/advanceTilePosition'
+import MineType from '@/services/enum/MineType';
 
 export default defineComponent({
   name: "SideBar",
@@ -50,14 +53,20 @@ export default defineComponent({
     }
   },
   methods: {
+    getQuarryCount(botRound: BotRound) : number {
+      return advanceMine(MineType.STONE, botRound.quarryCount, botRound.quarryCountAdvance)
+    },
+    getGoldMineCount(botRound: BotRound) : number {
+      return advanceMine(MineType.GOLD, botRound.goldMineCount, botRound.goldMineCountAdvance)
+    },
     getTilePosition(botRound: BotRound, tileType: TileType) : number {
       switch (tileType) {
         case TileType.UPGRADE:
-          return botRound.upgradeTilePosition
+          return advanceTilePosition(botRound.upgradeTilePosition, botRound.upgradeTilePositionAdvance)
         case TileType.WALL:
-          return botRound.wallTilePosition
+          return advanceTilePosition(botRound.wallTilePosition, botRound.wallTilePositionAdvance)
         case TileType.BUILDING:
-          return botRound.buildingTilePosition
+          return advanceTilePosition(botRound.buildingTilePosition, botRound.buildingTilePositionAdvance)
         default:
           return 0
       }

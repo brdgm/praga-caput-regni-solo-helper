@@ -2,6 +2,9 @@ import { BotRound, Round, State } from '@/store/state'
 import CardDeck from './CardDeck'
 import rollDice from 'brdgm-commons/src/util/random/rollDice'
 import Action from './enum/Action'
+import advanceMine from '@/util/advanceMine'
+import advanceTilePosition from '@/util/advanceTilePosition'
+import MineType from './enum/MineType'
 
 export default class RoundManager {
 
@@ -58,11 +61,11 @@ export default class RoundManager {
       const previousBotRound = previousRound.botRound[bot-1]
       const cardDeck = CardDeck.fromPersistence(previousBotRound.cardDeck)
       cardDeck.draw()  // draw next card
-      const quarryCount = previousBotRound.quarryCount
-      const goldMineCount = previousBotRound.goldMineCount
-      const upgradeTilePosition = previousBotRound.upgradeTilePosition
-      const wallTilePosition = previousBotRound.wallTilePosition
-      const buildingTilePosition = previousBotRound.buildingTilePosition
+      const quarryCount = advanceMine(MineType.STONE, previousBotRound.quarryCount, previousBotRound.quarryCountAdvance)
+      const goldMineCount = advanceMine(MineType.GOLD, previousBotRound.goldMineCount, previousBotRound.goldMineCountAdvance)
+      const upgradeTilePosition = advanceTilePosition(previousBotRound.upgradeTilePosition, previousBotRound.upgradeTilePositionAdvance)
+      const wallTilePosition = advanceTilePosition(previousBotRound.wallTilePosition, previousBotRound.wallTilePositionAdvance)
+      const buildingTilePosition = advanceTilePosition(previousBotRound.buildingTilePosition, previousBotRound.buildingTilePositionAdvance)
       botRound.push({
         round,
         bot,
@@ -86,13 +89,13 @@ export default class RoundManager {
     const cardDeck = CardDeck.fromPersistence(botRound.cardDeck)
     const currentCard = cardDeck.currentCard
     if (currentCard.actions.includes(Action.TAKE_UPGRADE_TILE)) {
-      botRound.upgradeTilePosition = getNextTilePosition(botRound.upgradeTilePosition)
+      botRound.upgradeTilePositionAdvance = 1
     }
     if (currentCard.actions.includes(Action.TAKE_WALL_TILE)) {
-      botRound.wallTilePosition = getNextTilePosition(botRound.wallTilePosition)
+      botRound.wallTilePositionAdvance = 1
     }
     if (currentCard.actions.includes(Action.CONSTRUCT_BUILDING)) {
-      botRound.buildingTilePosition = getNextTilePosition(botRound.buildingTilePosition)
+      botRound.buildingTilePositionAdvance = 1
     }
   }
 
@@ -108,13 +111,4 @@ function randomUniqueTilePosition(botRounds: BotRound[], getPosition: (botRound:
 
 function hasTilePosition(position: number, botRounds: BotRound[], getPosition: (botRound: BotRound) => number) : boolean {
   return botRounds.find(item => getPosition(item) == position) != undefined
-}
-
-function getNextTilePosition(currentPosition: number) {
-  if (currentPosition >= 4) {
-    return 1
-  }
-  else {
-    return currentPosition + 1
-  }
 }

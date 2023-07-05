@@ -59,6 +59,14 @@ export default defineComponent({
     const { t } = useI18n()
     return { t }
   },
+  mounted() {
+    if (this.currentCard.actions.includes(Action.INCREASE_PRODUCTION_STONE)) {
+      this.$emit('increaseProductionMine', MineType.STONE)
+    }
+    else if (this.currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD)) {
+      this.$emit('increaseProductionMine', MineType.GOLD)
+    }
+  },
   props: {
     botRound: {
       type: Object as PropType<BotRound>,

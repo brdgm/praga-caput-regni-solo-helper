@@ -52,10 +52,15 @@ export interface BotRound {
   bot: number
   cardDeck: CardDeckPersistence
   quarryCount: number
+  quarryCountAdvance?: number
   goldMineCount: number
+  goldMineCountAdvance?: number
   upgradeTilePosition: number
+  upgradeTilePositionAdvance?: number
   wallTilePosition: number
+  wallTilePositionAdvance?: number
   buildingTilePosition: number
+  buildingTilePositionAdvance?: number
 }
 export interface CardDeckPersistence {
   pile: string[]

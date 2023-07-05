@@ -75,7 +75,16 @@ export default defineComponent({
       }
     },
     increaseProductionMine(mineType: MineType) {
-      
+      if (this.botRound) {
+        if (mineType == MineType.STONE) {
+          this.botRound.quarryCountAdvance = 1
+          this.botRound.goldMineCountAdvance = undefined
+        }
+        else {
+          this.botRound.quarryCountAdvance = undefined
+          this.botRound.goldMineCountAdvance = 1
+        }
+      }
     }
   }
 })
