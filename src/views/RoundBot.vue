@@ -7,7 +7,7 @@
       :navigation-state="navigationState"
       @increaseProductionMine="increaseProductionMine"/>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()">
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="nextEnabled">
     {{t('action.next')}}
   </button>
 
@@ -26,6 +26,8 @@ import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import RoundManager from '@/services/RoundManager'
 import MineType from '@/services/enum/MineType'
+import CardDeck from '@/services/CardDeck'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'RoundBot',
@@ -54,6 +56,12 @@ export default defineComponent({
       else {
         return `/round/${this.round}/player/${this.playerCount}`
       }
+    },
+    nextEnabled() : boolean {
+      if (this.botRound && CardDeck.fromPersistence(this.botRound.cardDeck).currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD_OR_STONE)) {
+        return this.botRound.goldMineCountAdvance == 1 || this.botRound.quarryCountAdvance == 1
+      }
+      return true
     }
   },
   methods: {
