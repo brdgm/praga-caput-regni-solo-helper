@@ -1,6 +1,6 @@
 <template>
   <AppIcon class="actionIcon" :class="{[action]:true}"
-      type="action" :name="action" extension="jpg"/>
+      type="action" :name="action" extension="jpg" :help="true"/>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,7 @@ import AppIcon from '../../structure/AppIcon.vue'
 import Action from '@/services/enum/Action'
 import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'IncreaseProductionGold',
@@ -18,7 +19,8 @@ export default defineComponent({
     return { t }
   },
   components: {
-    AppIcon
+    AppIcon,
+    ModalDialog
   },
   props: {
     action: {

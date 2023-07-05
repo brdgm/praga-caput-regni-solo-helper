@@ -1,11 +1,11 @@
 <template>
   <div v-for="action in currentCard.actions" :key="action" class="mt-3">
     <template v-if="isProductionChoice(action)">
-      <AppIcon class="action" :class="{[productionChoiceActions[0]]:true}"
-          type="action" :name="productionChoiceActions[0]" extension="jpg"/>
+      <AppIcon class="actionIcon" :class="{[productionChoiceActions[0]]:true}"
+          type="action" :name="productionChoiceActions[0]" extension="jpg" :help="true"/>
       <strong> or </strong>
-      <AppIcon class="action" :class="{[productionChoiceActions[1]]:true}"
-          type="action" :name="productionChoiceActions[1]" extension="jpg"/>
+      <AppIcon class="actionIcon" :class="{[productionChoiceActions[1]]:true}"
+          type="action" :name="productionChoiceActions[1]" extension="jpg" :help="true"/>
     </template>
     <template v-else>
       <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"/>
@@ -13,12 +13,20 @@
   </div>
   <div class="mt-3">
     <AppIcon class="actionTileSelectionIcon"
-          type="action-tile" :name="currentCard.actionTileIndex.toString()" extension="jpg"/>
+          type="action-tile" :name="currentCard.actionTileIndex.toString()" extension="jpg" :help="true"
+          data-bs-target="#actionTileSelectionModal" data-bs-toggle="modal"/>
   </div>
+
+  <ModalDialog id="actionTileSelectionModal" :title="t('roundBot.actionTileSelection.title')">
+    <template #body>
+      <p v-html="t('roundBot.actionTileSelection.info', {ordinal:t(`ordinalOldest.${currentCard.actionTileIndex}`)})"></p>
+    </template>
+  </ModalDialog>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { useI18n } from 'vue-i18n';
 import AppIcon from '../structure/AppIcon.vue';
 import { BotRound } from '@/store/state';
 import Card from '@/services/Card';
@@ -30,6 +38,7 @@ import IncreaseProductionStone from './action/IncreaseProductionStone.vue';
 import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
 import TakeWallTile from './action/TakeWallTile.vue';
 import NavigationState from '@/util/NavigationState';
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'BotActions',
@@ -39,7 +48,12 @@ export default defineComponent({
     IncreaseProductionGold,
     IncreaseProductionStone,
     TakeUpgradeTile,
-    TakeWallTile
+    TakeWallTile,
+    ModalDialog
+  },
+  setup() {
+    const { t } = useI18n()
+    return { t }
   },
   props: {
     botRound: {
@@ -74,7 +88,7 @@ export default defineComponent({
 .actionIcon.increase-production-stone, .actionIcon.increase-production-gold, .actionTileSelectionIcon {
   width: 120px;
 }
-img.actionIcon, img.actionTileSelectionIcon {
+.actionIcon img, .actionTileSelectionIcon img {
   filter: drop-shadow(2px 2px 3px #888);
   border-radius: 10px;
   margin: 0.25rem;

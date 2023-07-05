@@ -1,9 +1,23 @@
 <template>
   <AppIcon class="actionIcon" :class="{[action]:true}"
-      type="action" :name="action" extension="jpg"/>
+      type="action" :name="action" extension="jpg" :help="true"
+      data-bs-target="#constructBuildingModal" data-bs-toggle="modal" />
   <TilePosition class="tilePosition" :tileType="tileType"
       :playerColor="navigationState.getPlayerColor()"
       :tilePosition="botRound.buildingTilePosition"/>
+
+  <ModalDialog id="constructBuildingModal" :title="t('roundBot.constructBuilding.title')" :sizeLg="true">
+    <template #body>
+      <p v-html="t('roundBot.constructBuilding.info1', {ordinal:t(`ordinal.${botRound.buildingTilePosition}`)})"></p>
+      <p v-html="t('roundBot.constructBuilding.info2')"></p>
+      <p v-html="t('roundBot.constructBuilding.info3')"></p>
+      <p v-html="t('roundBot.constructBuilding.info4')"></p>
+      <hr/>
+      <p v-html="t('roundBot.constructBuilding.info5')"></p>
+      <p v-html="t('roundBot.constructBuilding.info6')"></p>
+    </template>
+  </ModalDialog>
+
 </template>
 
 <script lang="ts">
@@ -15,6 +29,7 @@ import Action from '@/services/enum/Action'
 import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import TileType from '@/services/enum/TileType'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'ConstructBuilding',
@@ -24,7 +39,8 @@ export default defineComponent({
   },
   components: {
     AppIcon,
-    TilePosition
+    TilePosition,
+    ModalDialog
   },
   props: {
     action: {
@@ -50,6 +66,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tilePosition {
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 </style>

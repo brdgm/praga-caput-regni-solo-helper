@@ -45,16 +45,16 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 img {
   filter: drop-shadow(2px 2px 3px #888);
   margin: 0.25rem;
 }
 .icon {
-  height: 2rem;
+  width: 2rem;
   margin-left: 0.5rem;
 }
 .setup-bot-pawn {
-  height: 6rem;
+  width: 8rem;
 }
 </style>

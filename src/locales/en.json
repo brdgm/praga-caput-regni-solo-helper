@@ -14,6 +14,17 @@
     "bot2": "Johann Parler the Younger",
     "bot3": "Wenzel Parler"
   },
+  "ordinal": {
+    "1": "1st",
+    "2": "2nd",
+    "3": "3rd",
+    "4": "4th"
+  },
+  "ordinalOldest": {
+    "1": "1st.-oldest",
+    "2": "2nd-oldest",
+    "3": "3rd-oldest"
+  },
   "setup": {
     "title": "Setup Game",
     "players": {
@@ -37,6 +48,31 @@
   "roundPlayer": {
     "title": "Player | Player {player}",
     "takeTurn": "Take your turn."
+  },
+  "roundBot": {
+    "takeUpgradeTile": {
+      "title": "Take Upgrade Tile",
+      "info1": "<strong>Take the {ordinal} upgrade tile</strong> and return it to the bottom of its stock.",
+      "info2": "Replace it with a new tile."
+    },
+    "takeWallTile": {
+      "title": "Take Wall Tile",
+      "info1": "<strong>Take the {ordinal} wall tile</strong> and return it to the bottom of its stock.",
+      "info2": "Replace it with a new tile."
+    },
+    "constructBuilding": {
+      "title": "Construct Building",
+      "info1": "<strong>Take the {ordinal} building tile</strong> and place it on the main board adjacent to the plaza marked with the pawn.",
+      "info2": "If the tile has a blue corner, you must place it so that it matches up with a blue corner, if possible. Otherwise, you may place it however you wish.",
+      "info3": "Give the new building one of Parler’s cubes, if it has a space for one.",
+      "info4": "If the building is the last that can be built at that plaza, you immediately get zero, one, or both plaza bonuses, according to the usual rules. Parler’s cubes compete against yours, although he does not gain any plaza rewards himself.",
+      "info5": "<strong>Move the pawn figure</strong> clockwise around the board, as shown in the example below. The number of spaces to move is determined by the cost printed on the building tile. Add the resource costs together. <i>For example, a cost of [-2 gold] [-2 stone] moves the figure 4 spaces.</i>",
+      "info6": "If the figure lands on a plaza that has already been evaluated, keep advancing it clockwise until it lands on a plaza that still has room for a new building. Similarly, on your turn, if you build the last possible building on the marked plaza, advance the figure to the next plaza that Parler can still build on."
+    },
+    "actionTileSelection": {
+      "title": "Recycle Action Tile",
+      "info": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
+    }
   },
   "sideBar": {
     "round": "Round"
