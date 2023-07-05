@@ -39,6 +39,7 @@ import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
 import TakeWallTile from './action/TakeWallTile.vue';
 import NavigationState from '@/util/NavigationState';
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import MineType from '@/services/enum/MineType';
 
 export default defineComponent({
   name: 'BotActions',
@@ -50,6 +51,9 @@ export default defineComponent({
     TakeUpgradeTile,
     TakeWallTile,
     ModalDialog
+  },
+  emits: {
+    increaseProductionMine: (mineType: MineType) => true
   },
   setup() {
     const { t } = useI18n()

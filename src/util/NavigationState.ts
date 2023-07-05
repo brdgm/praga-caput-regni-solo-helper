@@ -11,9 +11,11 @@ export default class NavigationState {
   readonly playerCount : number
   readonly botCount : number
   readonly playerColors : PlayerColor[]
+  readonly allBotRounds: BotRound[]
 
   public constructor(route : RouteLocation, state: State) {    
     this.round = parseInt(route.params['round'] as string)
+    this.allBotRounds = this.getAllBotRounds(state, this.round)
     if (route.name == 'RoundPlayer') {
       this.player = parseInt(route.params['player'] as string)
     }
@@ -22,7 +24,7 @@ export default class NavigationState {
     }
     if (route.name == 'RoundBot') {
       this.bot = parseInt(route.params['bot'] as string)
-      this.botRound = this.getBotRound(state, this.round, this.bot)
+      this.botRound = this.allBotRounds.find(item => item.bot == this.bot)
     }
     else {
       this.bot = 0
@@ -34,10 +36,13 @@ export default class NavigationState {
     this.playerColors = playerSetup.playerColors
   }
 
-  private getBotRound(state: State, roundNo: number, bot: number) : BotRound|undefined {
+  private getAllBotRounds(state: State, roundNo: number) : BotRound[] {
     const round = state.rounds.find(item => item.round == roundNo)
     if (round) {
-      return round.botRound.find(item => item.round == roundNo && item.bot == bot)
+      return round.botRound
+    }
+    else {
+      return []
     }
   }
 

@@ -1,5 +1,5 @@
 /**
- * Type type
+ * Tile type
  */
 enum TileType {
   UPGRADE = 'upgrade',

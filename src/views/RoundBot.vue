@@ -3,7 +3,9 @@
 
   <h1><PlayerColorDisplay :playerColor="playerColor"/> {{t(`botName.bot${bot}`)}}</h1>
 
-  <BotActions v-if="navigationState.botRound" :botRound="navigationState.botRound" :navigation-state="navigationState"/>
+  <BotActions v-if="navigationState.botRound" :botRound="navigationState.botRound"
+      :navigation-state="navigationState"
+      @increaseProductionMine="increaseProductionMine"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -13,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
@@ -23,6 +25,7 @@ import BotActions from '@/components/round/BotActions.vue'
 import { useRoute } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import RoundManager from '@/services/RoundManager'
+import MineType from '@/services/enum/MineType'
 
 export default defineComponent({
   name: 'RoundBot',
@@ -70,6 +73,9 @@ export default defineComponent({
       else {
         this.$router.push(`/endOfGame`)
       }
+    },
+    increaseProductionMine(mineType: MineType) {
+      
     }
   }
 })

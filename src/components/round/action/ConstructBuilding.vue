@@ -6,7 +6,7 @@
       :playerColor="navigationState.getPlayerColor()"
       :tilePosition="botRound.buildingTilePosition"/>
 
-  <ModalDialog id="constructBuildingModal" :title="t('roundBot.constructBuilding.title')" :sizeLg="true">
+  <ModalDialog id="constructBuildingModal" :title="t('roundBot.constructBuilding.title')" :sizeLg="true" :scrollable="true">
     <template #body>
       <p v-html="t('roundBot.constructBuilding.info1', {ordinal:t(`ordinal.${botRound.buildingTilePosition}`)})"></p>
       <p v-html="t('roundBot.constructBuilding.info2')"></p>

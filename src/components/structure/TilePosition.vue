@@ -31,6 +31,11 @@ export default defineComponent({
     tilePosition: {
       type: Number,
       required: true
+    },
+    hexWidth: {
+      type: String,
+      required: false,
+      default: '50px'
     }
   }
 })
@@ -41,6 +46,6 @@ export default defineComponent({
   display: inline-block;
 }
 .hex {
-  width: 50px;
+  width: v-bind(hexWidth);
 }
 </style>
