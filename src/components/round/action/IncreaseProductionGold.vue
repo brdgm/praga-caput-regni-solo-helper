@@ -1,6 +1,13 @@
 <template>
   <AppIcon class="actionIcon" :class="{[action]:true}"
-      type="action" :name="action" extension="jpg" :help="true"/>
+      type="action" :name="action" extension="jpg" :help="true"
+      data-bs-target="#increaseProductionGoldModal" data-bs-toggle="modal"/>
+
+  <ModalDialog id="increaseProductionGoldModal" :title="t('roundBot.increaseProductionGold.title')">
+    <template #body>
+      <p v-html="t('roundBot.increaseProductionGold.info1')"></p>
+    </template>
+  </ModalDialog>
 </template>
 
 <script lang="ts">
@@ -11,6 +18,7 @@ import Action from '@/services/enum/Action'
 import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import MineType from '@/services/enum/MineType'
 
 export default defineComponent({
   name: 'IncreaseProductionGold',
@@ -21,6 +29,9 @@ export default defineComponent({
   components: {
     AppIcon,
     ModalDialog
+  },
+  emits: {
+    increaseProductionMine: (mineTypes: MineType[]) => true
   },
   props: {
     action: {
@@ -35,9 +46,9 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  beforeMount() {
+    this.$emit('increaseProductionMine', [MineType.GOLD])
   }
 })
 </script>
-
-<style lang="scss" scoped>
-</style>

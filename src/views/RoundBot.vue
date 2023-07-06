@@ -82,15 +82,19 @@ export default defineComponent({
         this.$router.push(`/endOfGame`)
       }
     },
-    increaseProductionMine(mineType: MineType) {
+    increaseProductionMine(mineTypes: MineType[]) {
       if (this.botRound) {
-        if (mineType == MineType.STONE) {
-          this.botRound.quarryCountAdvance = 1
+        if (mineTypes.includes(MineType.GOLD)) {
+          this.botRound.goldMineCountAdvance = 1
+        }
+        else {
           this.botRound.goldMineCountAdvance = undefined
+        }
+        if (mineTypes.includes(MineType.STONE)) {
+          this.botRound.quarryCountAdvance = 1
         }
         else {
           this.botRound.quarryCountAdvance = undefined
-          this.botRound.goldMineCountAdvance = 1
         }
       }
     }

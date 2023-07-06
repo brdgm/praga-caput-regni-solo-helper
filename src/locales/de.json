@@ -69,6 +69,22 @@
       "info5": "<strong>Bewege anschließend die Königswegfigur</strong> im Uhrzeigersinn weiter, wie in der Abbildung unten dargestellt. Die Anzahl der weiterzurückenden Felder entspricht den Kosten des soeben ausgelegten Gebäudeplättchens. <i>Kostet das Gebäudeplättchen bspw. 2 Gold und 2 Stein, bewegst du die Figur 4 Felder weiter.</i>",
       "info6": "Endet die Bewegung dabei auf einem Marktplatz, der bereits ausgewertet wurde, bewegst du die Figur weiter, bis du einen Marktplatz gefunden hast, neben den ihr noch Gebäude errichten könnt. Letzteres machst du auch, wenn du den letzten freien Bauplatz neben einem markierten Markt bebaust."
     },
+    "increaseProductionGold": {
+      "title": "Erhöhung von Goldminen",
+      "info1": "Goldminen werden um 1 erhöht."
+    },
+    "increaseProductionStone": {
+      "title": "Erhöhung von Steinbrüchen",
+      "info1": "Steinbrüche werden um 1 erhöht."
+    },
+    "increaseProductionGoldOrStone": {
+      "or": "oder",
+      "choose": "Wählen",
+      "chooseBoth": "Beide",
+      "title": "Erhöhung von Goldminen/Steinbrüchen",
+      "info1": "Wähle, ob Goldminen oder Steinbrüche erhöht werden, je nachdem von welchem <strong>du mehr hast</strong>.",
+      "info2": "Hast du genauso viele Goldminen und Steinbrüche wie Peter Parler, erhöht er beide um 1."
+    },
     "actionTileSelection": {
       "title": "Aktionsplättchen versetzen",
       "info": "Nimm das <strong>{ordinal} Aktionsplättchen</strong>, drehe das Rad 1 Position weiter und lege das Aktionsplättchen auf das leere Feld am Anfang des roten Bereichs."

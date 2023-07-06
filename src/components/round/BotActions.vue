@@ -1,24 +1,7 @@
 <template>
   <div v-for="action in currentCard.actions" :key="action" class="mt-3">
-
-    <template v-if="isProductionChoice(action)">
-      <div class="chooseMine">
-        <AppIcon class="actionIcon" :class="{[productionChoiceActions[0]]:true, inactive:!goldMineChosen}"
-            type="action" :name="productionChoiceActions[0]" extension="jpg" :help="true"/>
-        <button v-if="!goldMineChosen" class="btn btn-primary chooseButton" @click="chooseGoldMine">Choose</button>
-      </div>
-      <span class="or">or</span>
-      <div class="chooseMine">
-        <AppIcon class="actionIcon" :class="{[productionChoiceActions[1]]:true, inactive:!quarryChosen}"
-            type="action" :name="productionChoiceActions[1]" extension="jpg" :help="true"/>
-        <button v-if="!quarryChosen" class="btn btn-primary chooseButton" @click="chooseQuarry">Choose</button>
-      </div>
-    </template>
-
-    <template v-else>
-      <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"/>
-    </template>
-
+    <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"
+        @increaseProductionMine="handleIncreaseProductionMine"/>
   </div>
   <div class="mt-3">
     <AppIcon class="actionTileSelectionIcon"
@@ -28,7 +11,7 @@
 
   <ModalDialog id="actionTileSelectionModal" :title="t('roundBot.actionTileSelection.title')">
     <template #body>
-      <p v-html="t('roundBot.actionTileSelection.info', {ordinal:t(`ordinalOldest.${currentCard.actionTileIndex}`)})"></p>
+      <p v-html="t('roundBot.actionTileSelection.info1', {ordinal:t(`ordinalOldest.${currentCard.actionTileIndex}`)})"></p>
     </template>
   </ModalDialog>
 </template>
@@ -40,10 +23,10 @@ import AppIcon from '../structure/AppIcon.vue';
 import { BotRound } from '@/store/state';
 import Card from '@/services/Card';
 import CardDeck from '@/services/CardDeck';
-import Action from '@/services/enum/Action';
 import ConstructBuilding from './action/ConstructBuilding.vue';
 import IncreaseProductionGold from './action/IncreaseProductionGold.vue';
 import IncreaseProductionStone from './action/IncreaseProductionStone.vue';
+import IncreaseProductionGoldOrStone from './action/IncreaseProductionGoldOrStone.vue';
 import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
 import TakeWallTile from './action/TakeWallTile.vue';
 import NavigationState from '@/util/NavigationState';
@@ -57,38 +40,17 @@ export default defineComponent({
     ConstructBuilding,
     IncreaseProductionGold,
     IncreaseProductionStone,
+    IncreaseProductionGoldOrStone,
     TakeUpgradeTile,
     TakeWallTile,
     ModalDialog
   },
   emits: {
-    increaseProductionMine: (mineType: MineType) => true
+    increaseProductionMine: (mineTypes: MineType[]) => true
   },
   setup() {
     const { t } = useI18n()
     return { t }
-  },
-  data() {
-    return {
-      goldMineChosen: false,
-      quarryChosen: false
-    }
-  },
-  beforeMount() {
-    if (this.currentCard.actions.includes(Action.INCREASE_PRODUCTION_STONE)) {
-      this.$emit('increaseProductionMine', MineType.STONE)
-    }
-    else if (this.currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD)) {
-      this.$emit('increaseProductionMine', MineType.GOLD)
-    }
-    else if (this.currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD_OR_STONE)) {
-      if (this.botRound.goldMineCountAdvance == 1) {
-        this.goldMineChosen = true
-      }
-      else if (this.botRound.quarryCountAdvance == 1) {
-        this.quarryChosen = true
-      }
-    }
   },
   props: {
     botRound: {
@@ -103,24 +65,11 @@ export default defineComponent({
   computed: {
     currentCard() : Card {
       return CardDeck.fromPersistence(this.botRound.cardDeck).currentCard
-    },
-    productionChoiceActions() : Action[] {
-      return [Action.INCREASE_PRODUCTION_GOLD, Action.INCREASE_PRODUCTION_STONE]
     }
   },
   methods: {
-    isProductionChoice(action : Action) {
-      return action == Action.INCREASE_PRODUCTION_GOLD_OR_STONE
-    },
-    chooseGoldMine() : void {
-      this.goldMineChosen = true
-      this.quarryChosen = false
-      this.$emit('increaseProductionMine', MineType.GOLD)
-    },
-    chooseQuarry() : void {
-      this.goldMineChosen = false
-      this.quarryChosen = true
-      this.$emit('increaseProductionMine', MineType.STONE)
+    handleIncreaseProductionMine(mineType : MineType[]) {
+      this.$emit('increaseProductionMine', mineType)
     }
   }
 })
@@ -137,23 +86,5 @@ export default defineComponent({
   filter: drop-shadow(2px 2px 3px #888);
   border-radius: 10px;
   margin: 0.25rem;
-}
-.actionIcon.inactive img {
-  filter: opacity(40%);
-}
-.chooseMine {
-  display: inline-block;
-  position: relative;
-  .chooseButton {
-    position: absolute;
-    left: 25px;
-    bottom: 10px;
-  }
-}
-.or {
-  margin-left: 15px;
-  margin-right: 8px;
-  font-weight: bold;
-  font-size: larger;
 }
 </style>

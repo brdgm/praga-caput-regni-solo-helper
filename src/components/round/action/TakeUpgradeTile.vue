@@ -1,7 +1,7 @@
 <template>
   <AppIcon class="actionIcon" :class="{[action]:true}"
       type="action" :name="action" extension="jpg" :help="true"
-      data-bs-target="#takeUpgradeTileModal" data-bs-toggle="modal" />
+      data-bs-target="#takeUpgradeTileModal" data-bs-toggle="modal"/>
   <TilePosition class="tilePosition" :tileType="tileType"
       :playerColor="navigationState.getPlayerColor()"
       :tilePosition="botRound.upgradeTilePosition"/>

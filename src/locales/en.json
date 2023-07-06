@@ -69,9 +69,25 @@
       "info5": "<strong>Move the pawn figure</strong> clockwise around the board, as shown in the example below. The number of spaces to move is determined by the cost printed on the building tile. Add the resource costs together. <i>For example, a cost of [-2 gold] [-2 stone] moves the figure 4 spaces.</i>",
       "info6": "If the figure lands on a plaza that has already been evaluated, keep advancing it clockwise until it lands on a plaza that still has room for a new building. Similarly, on your turn, if you build the last possible building on the marked plaza, advance the figure to the next plaza that Parler can still build on."
     },
+    "increaseProductionGold": {
+      "title": "Increase Gold Production",
+      "info1": "Gold production is increased by 1."
+    },
+    "increaseProductionStone": {
+      "title": "Increase Stone Production",
+      "info1": "Stone production is increased by 1."
+    },
+    "increaseProductionGoldOrStone": {
+      "or": "or",
+      "choose": "Choose",
+      "chooseBoth": "Both",
+      "title": "Increase Production",
+      "info1": "Choose to increase gold mines or quarries, depending on which <strong>you have more of</strong>.",
+      "info2": "Increases on both tracks if your number of gold mines and number of quarries are equal."
+    },
     "actionTileSelection": {
       "title": "Recycle Action Tile",
-      "info": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
+      "info1": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
     }
   },
   "sideBar": {
