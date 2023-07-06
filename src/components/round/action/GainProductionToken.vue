@@ -25,6 +25,7 @@ import { BotRound, useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import rollDice from 'brdgm-commons/src/util/random/rollDice'
+import rollDiceDifferentValue from 'brdgm-commons/src/util/random/rollDiceDifferentValue'
 
 export default defineComponent({
   name: 'GainProductionToken',
@@ -58,11 +59,7 @@ export default defineComponent({
   },
   methods: {
     reroll() : void {
-      let newNumber
-      do {
-        newNumber = rollDice(this.productionTokenCountTotal)
-      } while (newNumber == this.tokenNumber)
-      this.tokenNumber = newNumber
+      this.tokenNumber = rollDiceDifferentValue(this.productionTokenCountTotal, this.tokenNumber)
     }
   }
 })
