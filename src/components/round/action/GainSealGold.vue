@@ -5,7 +5,14 @@
 
   <ModalDialog id="gainSealGoldModal" :title="t('roundBot.gainSealGold.title')">
     <template #body>
-      <p v-html="t('roundBot.gainSealGold.info1')"></p>
+      <p>
+        <span v-html="t('roundBot.gainSealGold.seal')"></span><br/>
+        <AppIcon class="sealIcon" type="seal" name="gold"/>
+      </p>
+      <p>
+        <span v-html="t('roundBot.gainSealGold.seal6Points')"></span><br/>
+        <AppIcon class="sealIcon" type="seal" name="6-points"/>
+      </p>
     </template>
   </ModalDialog>
 </template>
@@ -45,3 +52,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss">
+.sealIcon {
+  width: 80px;
+}
+.sealIcon img {
+  filter: drop-shadow(2px 2px 3px #888);
+  border-radius: 5px;
+}
+</style>

@@ -88,6 +88,20 @@
     "actionTileSelection": {
       "title": "Recycle Action Tile",
       "info1": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
+    },
+    "gainProductionToken": {
+      "title": "Gain Production Tile",
+      "info1": "Discard one of the production tiles at random."
+    },
+    "gainSealStone": {
+      "title": "Claim Stone Seal",
+      "seal": "Parler claims this seal:",
+      "seal6Points": "If this seal is already claimed by you, he claims this seal instead (if available):"
+    },
+    "gainSealGold": {
+      "title": "Claim Gold Seal",
+      "seal": "Parler claims this seal:",
+      "seal6Points": "If this seal is already claimed by you, he claims this seal instead (if available):"
     }
   },
   "sideBar": {
