@@ -109,8 +109,8 @@ export default class MineManager {
  * @param advance Advance, defaults to 0
  * @returns New value
  */
-function advance(mineType: MineType, currentValue: number, advance?: number) {
-  const newValue = currentValue + (advance ?? 0)
+function advance(mineType: MineType, currentValue: number, advanceSteps?: number) {
+  const newValue = currentValue + (advanceSteps ?? 0)
   const maxValue = getMaximum(mineType)
   if (newValue > maxValue) {
     return maxValue
