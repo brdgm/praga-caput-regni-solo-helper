@@ -1,0 +1,123 @@
+{
+  "gameTitle": "Praga Caput Regni",
+  "home": {
+    "title": "Praga Caput Regni Solo Helper",
+    "play1": "Spiele gegen <a href='#peterParlerModal' data-bs-toggle='modal'>Peter Parler</a>, den Solo Mode-Gegner von <a href='https://boardgamegeek.com/boardgame/308765/praga-caput-regni' target='_blank' rel='noopener'><b>Praga Caput Regni</b></a>.",
+    "play2": "Diese Applikation ersetzt das Kartendeck und stellt Spielhilfen bereit. Es ist möglich gegen die Parler-Familie zu spielen (bis zu 3 Bots).",
+    "play3": "Peter Parler erhält keine Punkte, aber er reagiert wie Mitspieler. Erreiche deine höchste Punktzahl!",
+    "peterParler1": "Peter Parler, auf Tschechisch Petr Parléř, war ein tschechisch-deutscher Maurer, der während der Herrschaft Karls IV. und dessen Söhne lebte. Geboren wurde er um das Jahr 1333 in Deutschland und starb 1399 in Prag.",
+    "peterParler2": "Parler arbeitete an den berühmtesten architektonischen Bauwerken seiner Zeit. Darunter der Veitsdom, die Karlsbrücke sowie zahlreiche bürgerliche Gebäude in der Prager Altstadt und der Dom der heiligen Barbara in Kutná Hora.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "botName": {
+    "bot1": "Peter Parler",
+    "bot2": "Johann Parler der Jüngere",
+    "bot3": "Wenzel Parler"
+  },
+  "ordinal": {
+    "1": "1.",
+    "2": "2.",
+    "3": "3.",
+    "4": "4."
+  },
+  "ordinalOldest": {
+    "1": "älteste",
+    "2": "zweitälteste",
+    "3": "drittälteste"
+  },
+  "setup": {
+    "title": "Spielaufbau",
+    "players": {
+      "title": "Spieler",
+      "playerCount": "Menschliche Spieler",
+      "playerCountItem": "{count} Spieler",
+      "playerColor": "Spieler-Farbe | Spieler {index} Farbe",
+      "botCount": "Parler Bots",
+      "botCountItem": "{count} Parler Bot | {count} Parler Bots (experimentell)",
+      "botColor": "{name}-Farbe"
+    },
+    "board": {
+      "title": "Vorbereitung Hauptspielplan",
+      "setupForPlayers": "Bereite ein reguläres <strong>{playerCount}-Personen-Spiel</strong> vor.",
+      "productionTokenSet": "Verwende diese Produktionsplättchen:",
+      "productionTokenAll": "Verwende alle Produktionsplättchen.",
+      "botPawnPlaza": "Stelle die Königswegfigur in Peter Parlers Farbe auf einen beliebigen Marktplatz. Hier plant Peter Parler als nächstes zu bauen. | Stelle für jeden Parler Bot die Königswegfigur in seiner Farbe auf einen beliebigen (unterschiedlichen) Marktplatz. Hier planen die Parler Bots als nächstes zu bauen.",
+      "noOtherComponents": "Parler benötigt kein Spieltableau und keine weiteren Komponenten."
+    }
+  },
+  "roundPlayer": {
+    "title": "Spieler | Spieler {player}",
+    "takeTurn": "Führe deinen Zug aus."
+  },
+  "roundBot": {
+    "takeUpgradeTile": {
+      "title": "Aufwertungsplättchen nehmen",
+      "info1": "<strong>Nimm das {ordinal} Aufwertungplättchen</strong> und lege es zurück unter den zugehörigen Stapel.",
+      "info2": "Lege ein neues Plättchen auf die freigewordene Position."
+    },
+    "takeWallTile": {
+      "title": "Mauerplättchen nehmen",
+      "info1": "<strong>Nimm das {ordinal} Mauerplättchen</strong> und lege es zurück unter den zugehörigen Stapel.",
+      "info2": "Lege ein neues Plättchen auf die freigewordene Position."
+    },
+    "constructBuilding": {
+      "title": "Gebäude errichten",
+      "info1": "<strong>Nimm das {ordinal} Gebäudeplättchen</strong> und lege es neben den durch die Königswegfigur markierten Marktplatz auf dem Hauptspielplan.",
+      "info2": "Ist auf dem Plättchen ein blauer Eckenbonus, musst du es - falls möglich - so anlegen, dass es an einen anderen blauen Eckenbonus angrenzt. Andernfalls kannst du es in beliebiger Ausrichtung an den markierten Marktplatz legen.",
+      "info3": "Ist auf dem Plättchen ein Feld für einen Markierungswürfel, legst du auf dieses einen von Parlers Markierungswürfeln.",
+      "info4": "Kann jetzt kein weiteres Gebäude an diesen Marktplatz gebaut werden, erhältst du sofort die regulären Marktplatz-Boni. Peter Parlers Markierungswürfel berücksichtigst du dabei genau wie im Mehrpersonenspiel. Peter Parler ignoriert jedoch die erhaltenen Boni.",
+      "info5": "<strong>Bewege anschließend die Königswegfigur</strong> im Uhrzeigersinn weiter, wie in der Abbildung unten dargestellt. Die Anzahl der weiterzurückenden Felder entspricht den Kosten des soeben ausgelegten Gebäudeplättchens. <i>Kostet das Gebäudeplättchen bspw. 2 Gold und 2 Stein, bewegst du die Figur 4 Felder weiter.</i>",
+      "info6": "Endet die Bewegung dabei auf einem Marktplatz, der bereits ausgewertet wurde, bewegst du die Figur weiter, bis du einen Marktplatz gefunden hast, neben den ihr noch Gebäude errichten könnt. Letzteres machst du auch, wenn du den letzten freien Bauplatz neben einem markierten Markt bebaust."
+    },
+    "increaseProductionGold": {
+      "title": "Erhöhung von Goldminen",
+      "info1": "Goldminen werden um 1 erhöht."
+    },
+    "increaseProductionStone": {
+      "title": "Erhöhung von Steinbrüchen",
+      "info1": "Steinbrüche werden um 1 erhöht."
+    },
+    "increaseProductionGoldOrStone": {
+      "or": "oder",
+      "choose": "Wählen",
+      "chooseBoth": "Beide",
+      "title": "Erhöhung von Goldminen/Steinbrüchen",
+      "info1": "Wähle, ob Goldminen oder Steinbrüche erhöht werden, je nachdem von welchem <strong>du mehr hast</strong>.",
+      "info2": "Hast du genauso viele Goldminen und Steinbrüche wie Peter Parler, erhöht er beide um 1."
+    },
+    "actionTileSelection": {
+      "title": "Aktionsplättchen versetzen",
+      "info": "Nimm das <strong>{ordinal} Aktionsplättchen</strong>, drehe das Rad 1 Position weiter und lege das Aktionsplättchen auf das leere Feld am Anfang des roten Bereichs."
+    }
+  },
+  "sideBar": {
+    "round": "Runde"
+  },
+  "endOfGame": {
+    "title": "Spielende"
+  },
+  "notfound": {
+    "title": "Nicht gefunden"
+  },
+  "action": {
+    "playGame": "Spielen",
+    "startGame": "Spiel starten",
+    "next": "Weiter",
+    "nextRound": "Nächste Runde",
+    "abortGame": "Spiel abbrechen",
+    "abortGameConfirm": "Das aktuelle Spiel wird abgebrochen - bist Du sicher?",
+    "endGame": "Spiel beenden",
+    "endGameConfirm": "Dieses Spiel wird beendet - bist Du sicher?",
+    "cancel": "Abbrechen",
+    "backToHome": "Zurück zum Anfang",
+    "back": "Zurück",
+    "close": "Schließen"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Applikation neu laden",
+    "notice": "Die Applikation wurde aktualisiert - möchtest du die Seite neu laden um die neueste Version zu nutzen?"
+  }
+}
