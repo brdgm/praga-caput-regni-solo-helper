@@ -114,7 +114,9 @@
     "round": "Runde"
   },
   "endOfGame": {
-    "title": "Spielende"
+    "title": "Spielende",
+    "info1": "Zähle deine Punkte gemäß der Spielregeln zusammen.",
+    "info2": "Alles über 140 Punkte ist ein gutes Ergebnis."
   },
   "notfound": {
     "title": "Nicht gefunden"

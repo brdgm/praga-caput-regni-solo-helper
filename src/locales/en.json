@@ -114,7 +114,9 @@
     "round": "Round"
   },
   "endOfGame": {
-    "title": "End of Game"
+    "title": "End of Game",
+    "info1": "Score your points following the rules.",
+    "info2": "Anything over 140 points is a good score."
   },
   "notfound": {
     "title": "Not Found"

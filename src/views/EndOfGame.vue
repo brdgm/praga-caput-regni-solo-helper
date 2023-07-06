@@ -1,7 +1,8 @@
 <template>
   <h1>{{t('endOfGame.title')}}</h1>
 
-  <p>...</p>
+  <p class="mt-4" v-html="t('endOfGame.info1')"></p>
+  <p v-html="t('endOfGame.info2')"></p>
 
   <FooterButtons endGameButtonType="endGame"/>
 </template>
