@@ -49,8 +49,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const mineManager = new MineManager()
-    return { t, mineManager }
+    return { t }
   },
   props: {
     action: {
@@ -82,7 +81,8 @@ export default defineComponent({
   },
   computed: {
     productionChoiceActions() : Action[] {
-      return this.mineManager.getProductionChoiceActions(this.botRound)
+      const mineManager = new MineManager(this.botRound)
+      return mineManager.getProductionChoiceActions()
     },
     chooseGoldMineActive() : boolean {
       return (this.goldMineChosen && !this.quarryChosen) || (!this.goldMineChosen && !this.quarryChosen)

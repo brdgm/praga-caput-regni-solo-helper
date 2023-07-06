@@ -10,7 +10,6 @@ export default class RoundManager {
 
   private _botCount : number
   private _rounds : Round[]
-  private _mineManager = new MineManager()
 
   public constructor(state : State) {
     this._botCount = state.setup.playerSetup.botCount
@@ -62,8 +61,9 @@ export default class RoundManager {
       const previousBotRound = previousRound.botRound[bot-1]
       const cardDeck = CardDeck.fromPersistence(previousBotRound.cardDeck)
       cardDeck.draw()  // draw next card
-      const quarryCount = this._mineManager.advance(MineType.STONE, previousBotRound.quarryCount, previousBotRound.quarryCountAdvance)
-      const goldMineCount = this._mineManager.advance(MineType.GOLD, previousBotRound.goldMineCount, previousBotRound.goldMineCountAdvance)
+      const mineManager = new MineManager(previousBotRound)
+      const quarryCount = mineManager.getAdvancedCount(MineType.STONE)
+      const goldMineCount = mineManager.getAdvancedCount(MineType.GOLD)
       const upgradeTilePosition = advanceTilePosition(previousBotRound.upgradeTilePosition, previousBotRound.upgradeTilePositionAdvance)
       const wallTilePosition = advanceTilePosition(previousBotRound.wallTilePosition, previousBotRound.wallTilePositionAdvance)
       const buildingTilePosition = advanceTilePosition(previousBotRound.buildingTilePosition, previousBotRound.buildingTilePositionAdvance)

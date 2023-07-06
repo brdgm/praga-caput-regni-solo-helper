@@ -28,6 +28,7 @@ import RoundManager from '@/services/RoundManager'
 import MineType from '@/services/enum/MineType'
 import CardDeck from '@/services/CardDeck'
 import Action from '@/services/enum/Action'
+import MineManager from '@/services/MineManager'
 
 export default defineComponent({
   name: 'RoundBot',
@@ -58,8 +59,14 @@ export default defineComponent({
       }
     },
     nextEnabled() : boolean {
-      if (this.botRound && CardDeck.fromPersistence(this.botRound.cardDeck).currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD_OR_STONE)) {
-        return this.botRound.goldMineCountAdvance == 1 || this.botRound.quarryCountAdvance == 1
+      if (this.botRound) {
+        const currentCard = CardDeck.fromPersistence(this.botRound.cardDeck).currentCard
+        if (currentCard.actions.includes(Action.INCREASE_PRODUCTION_GOLD_OR_STONE)) {
+          const productionChoiceActions = new MineManager(this.botRound).getProductionChoiceActions()
+          if (productionChoiceActions.length == 2) {
+            return this.botRound.goldMineCountAdvance == 1 || this.botRound.quarryCountAdvance == 1
+          }
+        }
       }
       return true
     }

@@ -1,5 +1,5 @@
 <template>
-  <div v-for="action in actions" :key="action" class="mt-3">
+  <div v-for="action in actions" :key="action + botRound.quarryCountAdvance + botRound.goldMineCountAdvance" class="mt-3">
     <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"
         @increaseProductionMine="handleIncreaseProductionMine"/>
   </div>
@@ -29,6 +29,9 @@ import IncreaseProductionStone from './action/IncreaseProductionStone.vue';
 import IncreaseProductionGoldOrStone from './action/IncreaseProductionGoldOrStone.vue';
 import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
 import TakeWallTile from './action/TakeWallTile.vue';
+import GainProductionToken from './action/GainProductionToken.vue';
+import GainSealGold from './action/GainSealGold.vue';
+import GainSealStone from './action/GainSealStone.vue';
 import NavigationState from '@/util/NavigationState';
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import MineType from '@/services/enum/MineType';
@@ -45,6 +48,9 @@ export default defineComponent({
     IncreaseProductionGoldOrStone,
     TakeUpgradeTile,
     TakeWallTile,
+    GainProductionToken,
+    GainSealGold,
+    GainSealStone,
     ModalDialog
   },
   emits: {
@@ -52,8 +58,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const mineManager = new MineManager()
-    return { t, mineManager }
+    return { t }
   },
   props: {
     botRound: {
@@ -70,7 +75,11 @@ export default defineComponent({
       return CardDeck.fromPersistence(this.botRound.cardDeck).currentCard
     },
     actions() : Action[] {
-      return this.mineManager.filterTransformProductionActions(this.botRound, this.currentCard.actions)
+      const result : Action[] = []
+      const mineManager = new MineManager(this.botRound)
+      result.push(...mineManager.filterTransformProductionActions(this.currentCard.actions))
+      result.push(...mineManager.getProductionGainActions())
+      return result
     }
   },
   methods: {
@@ -87,6 +96,9 @@ export default defineComponent({
 }
 .actionIcon.increase-production-stone, .actionIcon.increase-production-gold, .actionTileSelectionIcon {
   width: 120px;
+}
+.actionIcon.gain-seal-gold, .actionIcon.gain-seal-stone {
+  width: 200px;
 }
 .actionIcon img, .actionTileSelectionIcon img {
   filter: drop-shadow(2px 2px 3px #888);

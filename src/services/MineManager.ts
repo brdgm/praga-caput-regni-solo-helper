@@ -4,60 +4,36 @@ import Action from './enum/Action'
 
 export default class MineManager {
 
+  private _botRound : BotRound
+
+  public constructor(botRound : BotRound) {
+    this._botRound = botRound
+  }
+
   /**
-   * Advance value with given number up to the given limit.
+   * Gets the count of mines regarding the advancements of this round.
    * @param mineType Mine type
-   * @param currentValue Current value
-   * @param advance Advance, defaults to 0
    * @returns New value
    */
-  advance(mineType: MineType, currentValue: number, advance?: number) {
-    const newValue = currentValue + (advance ?? 0)
-    const maxValue = getMaximum(mineType)
-    if (newValue > maxValue) {
-      return maxValue
-    }
-    else {
-      return newValue
-    }
-  }
-
-  /**
-   * Checks if the number of mines unlock a production token.
-   * @param mineType Mine type
-   * @param currentValue Current value
-   * @returns true if production token is unlocked
-   */
-  unlockProductionToken(mineType: MineType, currentValue: number) : boolean {
+  getAdvancedCount(mineType: MineType) {
     if (mineType == MineType.STONE) {
-      return currentValue == 4
+      return advance(mineType, this._botRound.quarryCount, this._botRound.quarryCountAdvance)
     }
     else {
-      return currentValue == 5
+      return advance(mineType, this._botRound.goldMineCount, this._botRound.goldMineCountAdvance)
     }
-  }
-
-  /**
-   * Checks if the number of mines gain a seal.
-   * @param mineType Mine type
-   * @param currentValue Current value
-   * @returns true if seal is gained
-   */
-  gainSeal(mineType: MineType, currentValue: number) : boolean {
-    return currentValue == getMaximum(mineType)
   }
 
   /**
    * Checks with production actions are allowed depending on current status of mines.
-   * @param botRound Bot round
    * @returns Allowed actions
    */
-  getProductionChoiceActions(botRound: BotRound) : Action[] {
+  getProductionChoiceActions() : Action[] {
     const result : Action[] = []
-    if (botRound.goldMineCount < getMaximum(MineType.GOLD)) {
+    if (this._botRound.goldMineCount < getMaximum(MineType.GOLD)) {
       result.push(Action.INCREASE_PRODUCTION_GOLD)
     }
-    if (botRound.quarryCount < getMaximum(MineType.STONE)) {
+    if (this._botRound.quarryCount < getMaximum(MineType.STONE)) {
       result.push(Action.INCREASE_PRODUCTION_STONE)
     }
     return result
@@ -66,12 +42,11 @@ export default class MineManager {
   /**
    * Filters out production actions that are no longer possible because maximum is reached already.
    * Replaced gold or stone action with a single action if one of them has already reached its maximum.
-   * @param botRound Bot round
    * @param actions Actions
    * @returns Filtered/Transformed actions
    */
-  filterTransformProductionActions(botRound: BotRound, actions: Action[]) : Action[] {
-    const choiceActions = this.getProductionChoiceActions(botRound)
+  filterTransformProductionActions(actions: Action[]) : Action[] {
+    const choiceActions = this.getProductionChoiceActions()
     return actions
         .filter(action => {
           switch (action) {
@@ -94,6 +69,55 @@ export default class MineManager {
         })
   }
 
+  /**
+   * Checks if with the gained advancements this round production tokens or seals are unlocked and returns the appropriate actions.
+   * @param botRound Bot round
+   * @return Actions
+   */
+  getProductionGainActions() : Action[] {
+    const result : Action[] = []
+
+    if (this._botRound.goldMineCountAdvance) {
+      const newCount = this.getAdvancedCount(MineType.GOLD)
+      if (unlockProductionToken(MineType.GOLD, newCount)) {
+        result.push(Action.GAIN_PRODUCTION_TOKEN)
+      }
+      if (gainSeal(MineType.GOLD, newCount)) {
+        result.push(Action.GAIN_SEAL_GOLD)
+      }
+    }
+
+    if (this._botRound.quarryCountAdvance) {
+      const newCount = this.getAdvancedCount(MineType.STONE)
+      if (unlockProductionToken(MineType.STONE, newCount)) {
+        result.push(Action.GAIN_PRODUCTION_TOKEN)
+      }
+      if (gainSeal(MineType.STONE, newCount)) {
+        result.push(Action.GAIN_SEAL_STONE)
+      }
+    }
+
+    return result
+  }
+  
+}
+
+/**
+ * Advance value with given number up to the given limit.
+ * @param mineType Mine type
+ * @param currentValue Current value
+ * @param advance Advance, defaults to 0
+ * @returns New value
+ */
+function advance(mineType: MineType, currentValue: number, advance?: number) {
+  const newValue = currentValue + (advance ?? 0)
+  const maxValue = getMaximum(mineType)
+  if (newValue > maxValue) {
+    return maxValue
+  }
+  else {
+    return newValue
+  }
 }
 
 /**
@@ -108,4 +132,29 @@ function getMaximum(mineType: MineType) {
   else {
     return 8
   }
+}
+
+/**
+ * Checks if the number of mines unlock a production token.
+ * @param mineType Mine type
+ * @param currentValue Current value
+ * @returns true if production token is unlocked
+ */
+function unlockProductionToken(mineType: MineType, currentValue: number) : boolean {
+  if (mineType == MineType.STONE) {
+    return currentValue == 4
+  }
+  else {
+    return currentValue == 5
+  }
+}
+
+/**
+ * Checks if the number of mines gain a seal.
+ * @param mineType Mine type
+ * @param currentValue Current value
+ * @returns true if seal is gained
+ */
+function gainSeal(mineType: MineType, currentValue: number) : boolean {
+  return currentValue == getMaximum(mineType)
 }

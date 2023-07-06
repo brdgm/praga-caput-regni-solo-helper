@@ -5,84 +5,94 @@ import mockBotRound from '../helper/mockBotRound'
 import Action from '@/services/enum/Action'
 
 describe('services/MineManager', () => {
-  it('advance', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.advance(MineType.STONE, 3, 1)).to.eq(4)
-    expect(mineManager.advance(MineType.STONE, 3, 3)).to.eq(6)
-    expect(mineManager.advance(MineType.STONE, 7, 1)).to.eq(7)
-
-    expect(mineManager.advance(MineType.GOLD, 4, 1)).to.eq(5)
-    expect(mineManager.advance(MineType.GOLD, 3, 3)).to.eq(6)
-    expect(mineManager.advance(MineType.GOLD, 7, 1)).to.eq(8)
-    expect(mineManager.advance(MineType.GOLD, 8, 1)).to.eq(8)
+  it('getAdvancedCount_stone', () => {
+    expect(new MineManager(mockBotRound({quarryCount: 3, quarryCountAdvance: 1}))
+        .getAdvancedCount(MineType.STONE))
+        .to.eq(4)
+    expect(new MineManager(mockBotRound({quarryCount: 3, quarryCountAdvance: 3}))
+        .getAdvancedCount(MineType.STONE))
+        .to.eq(6)
+    expect(new MineManager(mockBotRound({quarryCount: 7, quarryCountAdvance: 1}))
+        .getAdvancedCount(MineType.STONE))
+        .to.eq(7)
   })
 
-  it('unlockProductionToken', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.unlockProductionToken(MineType.STONE, 3)).to.false
-    expect(mineManager.unlockProductionToken(MineType.STONE, 4)).to.true
-    expect(mineManager.unlockProductionToken(MineType.STONE, 5)).to.false
-
-    expect(mineManager.unlockProductionToken(MineType.GOLD, 4)).to.false
-    expect(mineManager.unlockProductionToken(MineType.GOLD, 5)).to.true
-    expect(mineManager.unlockProductionToken(MineType.GOLD, 6)).to.false
-  })
-
-  it('gainSeal', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.gainSeal(MineType.STONE, 6)).to.false
-    expect(mineManager.gainSeal(MineType.STONE, 7)).to.true
-
-    expect(mineManager.gainSeal(MineType.GOLD, 7)).to.false
-    expect(mineManager.gainSeal(MineType.GOLD, 8)).to.true
+  it('getAdvancedCount_gold', () => {
+    expect(new MineManager(mockBotRound({goldMineCount: 4, goldMineCountAdvance: 1}))
+        .getAdvancedCount(MineType.GOLD))
+        .to.eq(5)
+    expect(new MineManager(mockBotRound({goldMineCount: 3, goldMineCountAdvance: 3}))
+        .getAdvancedCount(MineType.GOLD))
+        .to.eq(6)
+    expect(new MineManager(mockBotRound({goldMineCount: 7, goldMineCountAdvance: 1}))
+        .getAdvancedCount(MineType.GOLD))
+        .to.eq(8)
+    expect(new MineManager(mockBotRound({goldMineCount: 8, goldMineCountAdvance: 1}))
+        .getAdvancedCount(MineType.GOLD))
+        .to.eq(8)
   })
 
   it('getProductionChoiceActions', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.getProductionChoiceActions(mockBotRound({quarryCount: 3, goldMineCount: 4})))
+    expect(new MineManager((mockBotRound({quarryCount: 3, goldMineCount: 4})))
+        .getProductionChoiceActions())
         .to.eql([Action.INCREASE_PRODUCTION_GOLD,Action.INCREASE_PRODUCTION_STONE])
-    expect(mineManager.getProductionChoiceActions(mockBotRound({quarryCount: 7, goldMineCount: 4})))
+    expect(new MineManager((mockBotRound({quarryCount: 7, goldMineCount: 4})))
+        .getProductionChoiceActions())
         .to.eql([Action.INCREASE_PRODUCTION_GOLD])
-    expect(mineManager.getProductionChoiceActions(mockBotRound({quarryCount: 3, goldMineCount: 8})))
+    expect(new MineManager((mockBotRound({quarryCount: 3, goldMineCount: 8})))
+        .getProductionChoiceActions())
         .to.eql([Action.INCREASE_PRODUCTION_STONE])
-    expect(mineManager.getProductionChoiceActions(mockBotRound({quarryCount: 7, goldMineCount: 8})))
+    expect(new MineManager((mockBotRound({quarryCount: 7, goldMineCount: 8})))
+        .getProductionChoiceActions())
         .to.eql([])
   })
 
   it('filterTransformProductionActions_stone', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 3, goldMineCount: 4}),
-        [Action.TAKE_WALL_TILE, Action.INCREASE_PRODUCTION_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 4}))
+        .filterTransformProductionActions([Action.TAKE_WALL_TILE, Action.INCREASE_PRODUCTION_STONE]))
         .to.eql([Action.TAKE_WALL_TILE, Action.INCREASE_PRODUCTION_STONE])
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 7, goldMineCount: 4}),
-        [Action.TAKE_WALL_TILE, Action.INCREASE_PRODUCTION_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 7, goldMineCount: 4}))
+        .filterTransformProductionActions([Action.TAKE_WALL_TILE, Action.INCREASE_PRODUCTION_STONE]))
         .to.eql([Action.TAKE_WALL_TILE])
   })
 
   it('filterTransformProductionActions_gold', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 3, goldMineCount: 4}),
-        [Action.TAKE_UPGRADE_TILE, Action.INCREASE_PRODUCTION_GOLD]))
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 4}))
+        .filterTransformProductionActions([Action.TAKE_UPGRADE_TILE, Action.INCREASE_PRODUCTION_GOLD]))
         .to.eql([Action.TAKE_UPGRADE_TILE, Action.INCREASE_PRODUCTION_GOLD])
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 3, goldMineCount: 8}),
-        [Action.TAKE_UPGRADE_TILE, Action.INCREASE_PRODUCTION_GOLD]))
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 8}))
+        .filterTransformProductionActions([Action.TAKE_UPGRADE_TILE, Action.INCREASE_PRODUCTION_GOLD]))
         .to.eql([Action.TAKE_UPGRADE_TILE])
   })
 
   it('filterTransformProductionActions_both', () => {
-    const mineManager = new MineManager()
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 3, goldMineCount: 4}),
-        [Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 4}))
+        .filterTransformProductionActions([Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
         .to.eql([Action.INCREASE_PRODUCTION_GOLD_OR_STONE])
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 7, goldMineCount: 4}),
-        [Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 7, goldMineCount: 4}))
+        .filterTransformProductionActions([Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
         .to.eql([Action.INCREASE_PRODUCTION_GOLD])
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 3, goldMineCount: 8}),
-        [Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 8}))
+        .filterTransformProductionActions([Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
         .to.eql([Action.INCREASE_PRODUCTION_STONE])
-    expect(mineManager.filterTransformProductionActions(mockBotRound({quarryCount: 7, goldMineCount: 8}),
-        [Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
+    expect(new MineManager(mockBotRound({quarryCount: 7, goldMineCount: 8}))
+        .filterTransformProductionActions([Action.INCREASE_PRODUCTION_GOLD_OR_STONE]))
         .to.eql([])
+  })
+
+  it('getProductionGainActions', () => {
+    expect(new MineManager(mockBotRound({quarryCount: 3, goldMineCount: 4}))
+        .getProductionGainActions())
+        .to.eql([])
+    expect(new MineManager(mockBotRound({quarryCount: 3, quarryCountAdvance: 1, goldMineCount: 8}))
+        .getProductionGainActions())
+        .to.eql([Action.GAIN_PRODUCTION_TOKEN])
+    expect(new MineManager(mockBotRound({quarryCount: 3, quarryCountAdvance: 1, goldMineCount: 7, goldMineCountAdvance: 1}))
+        .getProductionGainActions())
+        .to.eql([Action.GAIN_SEAL_GOLD, Action.GAIN_PRODUCTION_TOKEN])
+    expect(new MineManager(mockBotRound({quarryCount: 6, quarryCountAdvance: 1, goldMineCount: 4, goldMineCountAdvance: 1}))
+        .getProductionGainActions())
+        .to.eql([Action.GAIN_PRODUCTION_TOKEN, Action.GAIN_SEAL_STONE])
   })
 
 })

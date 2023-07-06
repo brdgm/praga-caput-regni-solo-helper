@@ -39,8 +39,7 @@ export default defineComponent({
   setup() {
     const { t } = useI18n();
     const playerSetup = useStateStore().setup.playerSetup
-    const mineManager = new MineManager()
-    return { t, playerSetup, mineManager };
+    return { t, playerSetup };
   },
   props: {
     navigationState: {
@@ -55,10 +54,12 @@ export default defineComponent({
   },
   methods: {
     getQuarryCount(botRound: BotRound) : number {
-      return this.mineManager.advance(MineType.STONE, botRound.quarryCount, botRound.quarryCountAdvance)
+      const mineManager = new MineManager(botRound)
+      return mineManager.getAdvancedCount(MineType.STONE)
     },
     getGoldMineCount(botRound: BotRound) : number {
-      return this.mineManager.advance(MineType.GOLD, botRound.goldMineCount, botRound.goldMineCountAdvance)
+      const mineManager = new MineManager(botRound)
+      return mineManager.getAdvancedCount(MineType.GOLD)
     },
     getTilePosition(botRound: BotRound, tileType: TileType) : number {
       switch (tileType) {
