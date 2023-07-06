@@ -48,7 +48,7 @@ export default defineComponent({
     ModalDialog
   },
   emits: {
-    increaseProductionMine: (mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+    increaseProductionMine: (_mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
