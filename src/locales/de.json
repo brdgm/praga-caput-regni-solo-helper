@@ -69,7 +69,7 @@
       "info1": "<strong>Nimm das {ordinal} Gebäudeplättchen</strong> und lege es neben den durch die Königswegfigur markierten Marktplatz auf dem Hauptspielplan.",
       "info2": "Ist auf dem Plättchen ein blauer Eckenbonus, musst du es - falls möglich - so anlegen, dass es an einen anderen blauen Eckenbonus angrenzt. Andernfalls kannst du es in beliebiger Ausrichtung an den markierten Marktplatz legen.",
       "info3": "Ist auf dem Plättchen ein Feld für einen Markierungswürfel, legst du auf dieses einen von Parlers Markierungswürfeln.",
-      "info4": "Kann jetzt kein weiteres Gebäude an diesen Marktplatz gebaut werden, erhältst du sofort die regulären Marktplatz-Boni. Peter Parlers Markierungswürfel berücksichtigst du dabei genau wie im Mehrpersonenspiel. Peter Parler ignoriert jedoch die erhaltenen Boni.",
+      "info4": "Kann jetzt kein weiteres Gebäude an diesen Marktplatz gebaut werden, erhältst du sofort die regulären Marktplatz-Boni. Parlers Markierungswürfel berücksichtigst du dabei genau wie im Mehrpersonenspiel. Parler ignoriert jedoch die erhaltenen Boni.",
       "info5": "<strong>Bewege anschließend die Königswegfigur</strong> im Uhrzeigersinn weiter, wie in der Abbildung unten dargestellt. Die Anzahl der weiterzurückenden Felder entspricht den Kosten des soeben ausgelegten Gebäudeplättchens. <i>Kostet das Gebäudeplättchen bspw. 2 Gold und 2 Stein, bewegst du die Figur 4 Felder weiter.</i>",
       "info6": "Endet die Bewegung dabei auf einem Marktplatz, der bereits ausgewertet wurde, bewegst du die Figur weiter, bis du einen Marktplatz gefunden hast, neben den ihr noch Gebäude errichten könnt. Letzteres machst du auch, wenn du den letzten freien Bauplatz neben einem markierten Markt bebaust."
     },
@@ -87,7 +87,7 @@
       "chooseBoth": "Beide",
       "title": "Erhöhung von Goldminen/Steinbrüchen",
       "info1": "Wähle, ob Goldminen oder Steinbrüche erhöht werden, je nachdem von welchem <strong>du mehr hast</strong>.",
-      "info2": "Hast du genauso viele Goldminen und Steinbrüche wie Peter Parler, erhöht er beide um 1."
+      "info2": "Hast du genauso viele Goldminen und Steinbrüche wie Parler, erhöht er beide um 1."
     },
     "gainProductionToken": {
       "title": "Erhalte Produktionsplättchen",
