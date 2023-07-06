@@ -3,27 +3,40 @@
       type="action" :name="action" extension="png" :help="true"
       data-bs-target="#gainProductionTokenModal" data-bs-toggle="modal"/>
 
+  <div class="tokenNumber">
+    <span v-html="t('roundBot.gainProductionToken.tokenNumber', {ordinal:t(`ordinal.${tokenNumber}`)})"></span>
+    <button class="btn btn-outline-secondary btn-sm" @click="reroll">{{t('roundBot.gainProductionToken.reroll')}}</button>
+  </div>
+
   <ModalDialog id="gainProductionTokenModal" :title="t('roundBot.gainProductionToken.title')">
     <template #body>
-      <p v-html="t('roundBot.gainProductionToken.info1')"></p>
+      <p v-html="t('roundBot.gainProductionToken.info1', {ordinal:t(`ordinal.${tokenNumber}`)})"></p>
+      <button class="btn btn-outline-secondary btn-sm" @click="reroll">{{t('roundBot.gainProductionToken.reroll')}}</button>
     </template>
   </ModalDialog>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../../structure/AppIcon.vue'
 import Action from '@/services/enum/Action'
-import { BotRound } from '@/store/state'
+import { BotRound, useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+import rollDice from 'brdgm-commons/src/util/random/rollDice'
 
 export default defineComponent({
   name: 'GainProductionToken',
   setup() {
     const { t } = useI18n()
-    return { t }
+
+    const state = useStateStore()
+    const totalPlayerCount = state.setup.playerSetup.playerCount + state.setup.playerSetup.botCount
+    const productionTokenCountTotal = totalPlayerCount * 2
+    const tokenNumber = ref(rollDice(productionTokenCountTotal))
+
+    return { t, productionTokenCountTotal, tokenNumber }
   },
   components: {
     AppIcon,
@@ -42,6 +55,15 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  methods: {
+    reroll() : void {
+      let newNumber
+      do {
+        newNumber = rollDice(this.productionTokenCountTotal)
+      } while (newNumber == this.tokenNumber)
+      this.tokenNumber = newNumber
+    }
   }
 })
 </script>
@@ -49,5 +71,13 @@ export default defineComponent({
 <style lang="scss">
 .productionTokenIcon {
   width: 80px;
+}
+.tokenNumber {
+  display: inline-block;
+  margin-left: 20px;
+  font-weight: bold;
+  button {
+    margin-left: 10px;
+  }
 }
 </style>

@@ -18,7 +18,11 @@
     "1": "1.",
     "2": "2.",
     "3": "3.",
-    "4": "4."
+    "4": "4.",
+    "5": "5.",
+    "6": "6.",
+    "7": "7.",
+    "8": "8."
   },
   "ordinalOldest": {
     "1": "älteste",
@@ -84,6 +88,22 @@
       "title": "Erhöhung von Goldminen/Steinbrüchen",
       "info1": "Wähle, ob Goldminen oder Steinbrüche erhöht werden, je nachdem von welchem <strong>du mehr hast</strong>.",
       "info2": "Hast du genauso viele Goldminen und Steinbrüche wie Peter Parler, erhöht er beide um 1."
+    },
+    "gainProductionToken": {
+      "title": "Erhalte Produktionsplättchen",
+      "info1": "Werfe das <strong>{ordinal} Produktionsplättchen</strong> vom Fluss ab.",
+      "tokenNumber": "Werfe {ordinal} ab",
+      "reroll": "Neu wählen"
+    },
+    "gainSealStone": {
+      "title": "Erwerbe Stein-Siegel",
+      "seal": "Parler erwirbt dieses Siegel:",
+      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen diesen Siegel (wenn verfügbar):"
+    },
+    "gainSealGold": {
+      "title": "Erwerber Gold-Siegel",
+      "seal": "Parler erwirbt dieses Siegel:",
+      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen diesen Siegel (wenn verfügbar):"
     },
     "actionTileSelection": {
       "title": "Aktionsplättchen versetzen",

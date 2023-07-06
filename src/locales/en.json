@@ -18,7 +18,11 @@
     "1": "1st",
     "2": "2nd",
     "3": "3rd",
-    "4": "4th"
+    "4": "4th",
+    "5": "4th",
+    "6": "5th",
+    "7": "7th",
+    "8": "8th"
   },
   "ordinalOldest": {
     "1": "1st.-oldest",
@@ -85,13 +89,11 @@
       "info1": "Choose to increase gold mines or quarries, depending on which <strong>you have more of</strong>.",
       "info2": "Increases on both tracks if your number of gold mines and number of quarries are equal."
     },
-    "actionTileSelection": {
-      "title": "Recycle Action Tile",
-      "info1": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
-    },
     "gainProductionToken": {
       "title": "Gain Production Tile",
-      "info1": "Discard one of the production tiles at random."
+      "info1": "Discard the <strong>{ordinal} production tile</strong> from the river.",
+      "tokenNumber": "Discard {ordinal}",
+      "reroll": "Reroll"
     },
     "gainSealStone": {
       "title": "Claim Stone Seal",
@@ -102,6 +104,10 @@
       "title": "Claim Gold Seal",
       "seal": "Parler claims this seal:",
       "seal6Points": "If this seal is already claimed by you, he claims this seal instead (if available):"
+    },
+    "actionTileSelection": {
+      "title": "Recycle Action Tile",
+      "info1": "Take the <strong>{ordinal} action tile</strong> on the wheel, rotate the wheel one space clockwise and place the tile in the empty space at the beginning of the red zone."
     }
   },
   "sideBar": {
