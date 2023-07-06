@@ -5,7 +5,7 @@
       <h5 class="mt-3">{{t(`botName.bot${index+1}`)}}</h5>
        {{getQuarryCount(botRound)}}<AppIcon class="mineIcon" type="mine" name="stone"/> &nbsp;
        {{getGoldMineCount(botRound)}}<AppIcon class="mineIcon" type="mine" name="gold"/><br/>
-      <div v-for="tileType of tileTypes">
+      <div v-for="tileType of tileTypes" :key="tileType">
       <TilePosition 
           class="tilePosition" :tileType="tileType"
           :playerColor="getBotPlayerColor(index+1)"
@@ -35,7 +35,7 @@ export default defineComponent({
   components: {
     AppIcon,
     TilePosition
-},
+  },
   setup() {
     const { t } = useI18n();
     const playerSetup = useStateStore().setup.playerSetup

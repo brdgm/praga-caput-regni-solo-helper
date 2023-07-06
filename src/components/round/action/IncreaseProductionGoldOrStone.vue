@@ -3,19 +3,19 @@
     <AppIcon class="actionIcon" :class="{[productionChoiceActions[0]]:true, inactive:!goldMineChosen}"
         type="action" :name="productionChoiceActions[0]" extension="jpg" :help="true"
         data-bs-target="#increaseProductionGoldOrStoneModal" data-bs-toggle="modal"/>
-    <button class="btn chooseButton" :class="{'btn-primary':!chooseGoldMineActive, 'btn-success':chooseGoldMineActive}"
+    <button class="btn chooseButton" :class="{'btn-primary':chooseGoldMineActive, 'btn-secondary':!chooseGoldMineActive}"
         @click="chooseGoldMine">{{t('roundBot.increaseProductionGoldOrStone.choose')}}</button>
   </div>
   <div class="chooseMine">
     <div class="labelOr" v-html="t('roundBot.increaseProductionGoldOrStone.or')"></div>
-    <button class="btn chooseButton" :class="{'btn-primary':!chooseBothActive, 'btn-success':chooseBothActive}"
+    <button class="btn chooseButton" :class="{'btn-primary':chooseBothActive, 'btn-secondary':!chooseBothActive}"
         @click="chooseBoth">{{t('roundBot.increaseProductionGoldOrStone.chooseBoth')}}</button>
   </div>
   <div class="chooseMine">
     <AppIcon class="actionIcon" :class="{[productionChoiceActions[1]]:true, inactive:!quarryChosen}"
         type="action" :name="productionChoiceActions[1]" extension="jpg" :help="true"
         data-bs-target="#increaseProductionGoldOrStoneModal" data-bs-toggle="modal"/>
-    <button class="btn chooseButton" :class="{'btn-primary':!chooseQuarryActive, 'btn-success':chooseQuarryActive}"
+    <button class="btn chooseButton" :class="{'btn-primary':chooseQuarryActive, 'btn-secondary':!chooseQuarryActive}"
         @click="chooseQuarry">{{t('roundBot.increaseProductionGoldOrStone.choose')}}</button>
   </div>
 
@@ -36,6 +36,7 @@ import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import MineType from '@/services/enum/MineType'
+import MineManager from '@/services/MineManager'
 
 export default defineComponent({
   name: 'IncreaseProductionGoldOrStone',
@@ -44,11 +45,12 @@ export default defineComponent({
     ModalDialog
   },
   emits: {
-    increaseProductionMine: (mineTypes: MineType[]) => true
+    increaseProductionMine: (mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const mineManager = new MineManager()
+    return { t, mineManager }
   },
   props: {
     action: {
@@ -80,16 +82,16 @@ export default defineComponent({
   },
   computed: {
     productionChoiceActions() : Action[] {
-      return [Action.INCREASE_PRODUCTION_GOLD, Action.INCREASE_PRODUCTION_STONE]
+      return this.mineManager.getProductionChoiceActions(this.botRound)
     },
     chooseGoldMineActive() : boolean {
-      return this.goldMineChosen && !this.quarryChosen
+      return (this.goldMineChosen && !this.quarryChosen) || (!this.goldMineChosen && !this.quarryChosen)
     },
     chooseQuarryActive() : boolean {
-      return this.quarryChosen && !this.goldMineChosen
+      return (this.quarryChosen && !this.goldMineChosen) || (!this.goldMineChosen && !this.quarryChosen)
     },
     chooseBothActive() : boolean {
-      return this.goldMineChosen && this.quarryChosen
+      return (this.goldMineChosen && this.quarryChosen) || (!this.goldMineChosen && !this.quarryChosen)
     }
   },
   methods: {

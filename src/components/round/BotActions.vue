@@ -1,5 +1,5 @@
 <template>
-  <div v-for="action in currentCard.actions" :key="action" class="mt-3">
+  <div v-for="action in actions" :key="action" class="mt-3">
     <component :is="action" :action="action" :botRound="botRound" :navigationState="navigationState"
         @increaseProductionMine="handleIncreaseProductionMine"/>
   </div>
@@ -32,6 +32,8 @@ import TakeWallTile from './action/TakeWallTile.vue';
 import NavigationState from '@/util/NavigationState';
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import MineType from '@/services/enum/MineType';
+import Action from '@/services/enum/Action';
+import MineManager from '@/services/MineManager';
 
 export default defineComponent({
   name: 'BotActions',
@@ -46,11 +48,12 @@ export default defineComponent({
     ModalDialog
   },
   emits: {
-    increaseProductionMine: (mineTypes: MineType[]) => true
+    increaseProductionMine: (mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const mineManager = new MineManager()
+    return { t, mineManager }
   },
   props: {
     botRound: {
@@ -65,6 +68,9 @@ export default defineComponent({
   computed: {
     currentCard() : Card {
       return CardDeck.fromPersistence(this.botRound.cardDeck).currentCard
+    },
+    actions() : Action[] {
+      return this.mineManager.filterTransformProductionActions(this.botRound, this.currentCard.actions)
     }
   },
   methods: {
