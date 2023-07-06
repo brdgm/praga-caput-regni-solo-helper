@@ -2,14 +2,15 @@ import { BotRound, Round, State } from '@/store/state'
 import CardDeck from './CardDeck'
 import rollDice from 'brdgm-commons/src/util/random/rollDice'
 import Action from './enum/Action'
-import advanceMine from '@/util/advanceMine'
 import advanceTilePosition from '@/util/advanceTilePosition'
 import MineType from './enum/MineType'
+import MineManager from './MineManager'
 
 export default class RoundManager {
 
   private _botCount : number
   private _rounds : Round[]
+  private _mineManager = new MineManager()
 
   public constructor(state : State) {
     this._botCount = state.setup.playerSetup.botCount
@@ -61,8 +62,8 @@ export default class RoundManager {
       const previousBotRound = previousRound.botRound[bot-1]
       const cardDeck = CardDeck.fromPersistence(previousBotRound.cardDeck)
       cardDeck.draw()  // draw next card
-      const quarryCount = advanceMine(MineType.STONE, previousBotRound.quarryCount, previousBotRound.quarryCountAdvance)
-      const goldMineCount = advanceMine(MineType.GOLD, previousBotRound.goldMineCount, previousBotRound.goldMineCountAdvance)
+      const quarryCount = this._mineManager.advance(MineType.STONE, previousBotRound.quarryCount, previousBotRound.quarryCountAdvance)
+      const goldMineCount = this._mineManager.advance(MineType.GOLD, previousBotRound.goldMineCount, previousBotRound.goldMineCountAdvance)
       const upgradeTilePosition = advanceTilePosition(previousBotRound.upgradeTilePosition, previousBotRound.upgradeTilePositionAdvance)
       const wallTilePosition = advanceTilePosition(previousBotRound.wallTilePosition, previousBotRound.wallTilePositionAdvance)
       const buildingTilePosition = advanceTilePosition(previousBotRound.buildingTilePosition, previousBotRound.buildingTilePositionAdvance)

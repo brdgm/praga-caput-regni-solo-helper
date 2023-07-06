@@ -26,9 +26,9 @@ import TileType from '@/services/enum/TileType';
 import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues';
 import { BotRound, useStateStore } from '@/store/state';
 import PlayerColor from '@/services/enum/PlayerColor';
-import advanceMine from '@/util/advanceMine'
 import advanceTilePosition from '@/util/advanceTilePosition'
 import MineType from '@/services/enum/MineType';
+import MineManager from '@/services/MineManager';
 
 export default defineComponent({
   name: "SideBar",
@@ -39,7 +39,8 @@ export default defineComponent({
   setup() {
     const { t } = useI18n();
     const playerSetup = useStateStore().setup.playerSetup
-    return { t, playerSetup };
+    const mineManager = new MineManager()
+    return { t, playerSetup, mineManager };
   },
   props: {
     navigationState: {
@@ -54,10 +55,10 @@ export default defineComponent({
   },
   methods: {
     getQuarryCount(botRound: BotRound) : number {
-      return advanceMine(MineType.STONE, botRound.quarryCount, botRound.quarryCountAdvance)
+      return this.mineManager.advance(MineType.STONE, botRound.quarryCount, botRound.quarryCountAdvance)
     },
     getGoldMineCount(botRound: BotRound) : number {
-      return advanceMine(MineType.GOLD, botRound.goldMineCount, botRound.goldMineCountAdvance)
+      return this.mineManager.advance(MineType.GOLD, botRound.goldMineCount, botRound.goldMineCountAdvance)
     },
     getTilePosition(botRound: BotRound, tileType: TileType) : number {
       switch (tileType) {

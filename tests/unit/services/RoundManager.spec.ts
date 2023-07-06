@@ -65,6 +65,40 @@ describe('services/RoundManager', () => {
     expect(botRound.buildingTilePosition).to.eq(4)
   })
 
+  it('prepareNextRound_advance', () => {
+    const roundManager = new RoundManager(mockState({playerCount:1,botCount:1,rounds:[
+      {round:1,botRound:[{
+        round:1,
+        bot:1,
+        cardDeck:{pile:['1','2','3','4','5'],discard:[]},
+        quarryCount:4,
+        quarryCountAdvance:1,
+        goldMineCount:5,
+        goldMineCountAdvance:5,
+        upgradeTilePosition:2,
+        upgradeTilePositionAdvance:1,
+        wallTilePosition:1,
+        wallTilePositionAdvance:2,
+        buildingTilePosition:4,
+        buildingTilePositionAdvance:3
+      }]}
+    ]}))
+    const round = roundManager.prepareNextRound(2)
+
+    expect(round.round).to.eq(2)
+    expect(round.botRound.length).to.eq(1)
+
+    const botRound = round.botRound[0]
+    expect(botRound.round).to.eq(2)
+    expect(botRound.bot).to.eq(1)
+    expect(botRound.cardDeck).to.eql({pile:['2','3','4','5'],discard:['1']})
+    expect(botRound.quarryCount).to.eq(5)
+    expect(botRound.goldMineCount).to.eq(8)
+    expect(botRound.upgradeTilePosition).to.eq(3)
+    expect(botRound.wallTilePosition).to.eq(3)
+    expect(botRound.buildingTilePosition).to.eq(3)
+  })
+
   it('advanceTilePosition_upgrade', () => {
     const state = mockState({playerCount:1,botCount:1,rounds:[
       {round:1,botRound:[{
@@ -82,9 +116,12 @@ describe('services/RoundManager', () => {
     roundManager.advanceTilePosition(state.rounds[0].botRound[0])
 
     const botRound = state.rounds[0].botRound[0]
-    expect(botRound.upgradeTilePosition).to.eq(3) // incremented
+    expect(botRound.upgradeTilePosition).to.eq(2)
+    expect(botRound.upgradeTilePositionAdvance).to.eq(1)
     expect(botRound.wallTilePosition).to.eq(1)
+    expect(botRound.wallTilePositionAdvance).to.undefined
     expect(botRound.buildingTilePosition).to.eq(4)
+    expect(botRound.buildingTilePositionAdvance).to.undefined
   })
 
   it('advanceTilePosition_wall', () => {
@@ -105,8 +142,11 @@ describe('services/RoundManager', () => {
 
     const botRound = state.rounds[0].botRound[0]
     expect(botRound.upgradeTilePosition).to.eq(2)
-    expect(botRound.wallTilePosition).to.eq(2) // incremented
+    expect(botRound.upgradeTilePositionAdvance).to.undefined
+    expect(botRound.wallTilePosition).to.eq(1)
+    expect(botRound.wallTilePositionAdvance).to.eq(1)
     expect(botRound.buildingTilePosition).to.eq(4)
+    expect(botRound.buildingTilePositionAdvance).to.undefined
   })
 
   it('advanceTilePosition_building', () => {
@@ -127,7 +167,10 @@ describe('services/RoundManager', () => {
 
     const botRound = state.rounds[0].botRound[0]
     expect(botRound.upgradeTilePosition).to.eq(2)
+    expect(botRound.upgradeTilePositionAdvance).to.undefined
     expect(botRound.wallTilePosition).to.eq(1)
-    expect(botRound.buildingTilePosition).to.eq(1) // incremented back to 1
+    expect(botRound.wallTilePositionAdvance).to.undefined
+    expect(botRound.buildingTilePosition).to.eq(4)
+    expect(botRound.buildingTilePositionAdvance).to.eq(1)
   })
 })
