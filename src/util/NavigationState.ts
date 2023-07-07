@@ -50,7 +50,15 @@ export default class NavigationState {
     return this.round == 1
   }
 
-  public isLastRound() {
+  public isLastRoundOfEra1() {
+    return this.round == 8
+  }
+
+  public isStartRoundOfEra2() {
+    return this.round == 9
+  }
+
+  public isLastRoundOfEra2() {
     return this.round == 16
   }
 

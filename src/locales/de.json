@@ -107,11 +107,16 @@
     },
     "actionTileSelection": {
       "title": "Aktionsplättchen versetzen",
-      "info": "Nimm das <strong>{ordinal} Aktionsplättchen</strong>, drehe das Rad 1 Position weiter und lege das Aktionsplättchen auf das leere Feld am Anfang des roten Bereichs."
+      "info1": "Nimm das <strong>{ordinal} Aktionsplättchen</strong>, drehe das Rad 1 Position weiter und lege das Aktionsplättchen auf das leere Feld am Anfang des roten Bereichs."
     }
   },
   "sideBar": {
     "round": "Runde"
+  },
+  "endOfEra1": {
+    "title": "Ende von Ära I",
+    "info1": "Entferne  die drei Reihen der Sechseckplättchen der Ära I.",
+    "info2": "Ersetze ihre Stapel durch die der Ära II und lege neue Sechseckplättchen aus."
   },
   "endOfGame": {
     "title": "Spielende",

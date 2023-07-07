@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-img {
+.icon img, .setup-bot-pawn img {
   filter: drop-shadow(2px 2px 3px #888);
   margin: 0.25rem;
 }

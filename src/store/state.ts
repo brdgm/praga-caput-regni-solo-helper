@@ -9,7 +9,7 @@ export const useStateStore = defineStore(`${name}.state`, {
       baseFontSize: 1.0,
       setup: {
         playerSetup: {
-          playerCount: 2,
+          playerCount: 1,
           botCount: 1,
           playerColors: [PlayerColor.BLUE, PlayerColor.RED, PlayerColor.GREEN, PlayerColor.PURPLE]
         }
