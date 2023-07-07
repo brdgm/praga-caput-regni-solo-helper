@@ -1,3 +1,5 @@
+import CardDeck from '@/services/CardDeck'
+import Action from '@/services/enum/Action'
 import PlayerColor from '@/services/enum/PlayerColor'
 import { BotRound, State } from '@/store/state'
 import { RouteLocation } from 'vue-router'
@@ -12,6 +14,7 @@ export default class NavigationState {
   readonly botCount : number
   readonly playerColors : PlayerColor[]
   readonly allBotRounds: BotRound[]
+  readonly maximumProductionTokensLeft : number
 
   public constructor(route : RouteLocation, state: State) {    
     this.round = parseInt(route.params['round'] as string)
@@ -34,6 +37,7 @@ export default class NavigationState {
     this.playerCount = playerSetup.playerCount
     this.botCount = playerSetup.botCount
     this.playerColors = playerSetup.playerColors
+    this.maximumProductionTokensLeft = getMaximumProductionTokensLeft(state, this.round, this.bot)
   }
 
   private getAllBotRounds(state: State, roundNo: number) : BotRound[] {
@@ -71,4 +75,16 @@ export default class NavigationState {
     }
   }
 
+}
+
+function getMaximumProductionTokensLeft(state : State, roundNo : number, bot: number) : number {
+  const totalPlayerCount = state.setup.playerSetup.playerCount + state.setup.playerSetup.botCount
+  const productionTokenCountTotal = totalPlayerCount * 2
+  const productionTokensClaimed = state.rounds
+      .filter(round => round.round <= roundNo)
+      .flatMap(round => round.botRound)
+      .filter(botRound => botRound.round < roundNo || botRound.bot < bot)
+      .map(botRound => botRound.productionTokensClaimed ?? 0)
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  return productionTokenCountTotal - productionTokensClaimed
 }
