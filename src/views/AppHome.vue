@@ -12,13 +12,11 @@
   <p v-html="t('home.play2')"></p>
   <p v-html="t('home.play3')"></p>
 
-  <!--
   <p class="text-muted fst-italic">
     {{t('home.feedback')}}
-    <a href="https://boardgamegeek.com/thread/XXX/XXX" target="_blank" rel="noopener">Board Game Geek Thread</a> |
+    <a href="https://boardgamegeek.com/thread/3113557/brdgmme-praga-caput-regni-solo-helper-web-applicat" target="_blank" rel="noopener">Board Game Geek Thread</a> |
     <a href="https://github.com/brdgm/praga-caput-regni-solo-helper" target="_blank" rel="noopener">GitHub</a>
   </p>
-  -->
 
   <ModalDialog id="peterParlerModal" title="Peter Parler" :size-lg="true">
     <template #body>
