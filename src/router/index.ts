@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import AppHome from '@/views/AppHome.vue'
+import EndOfEra1 from '@/views/EndOfEra1.vue'
 import EndOfGame from '@/views/EndOfGame.vue'
 import NotFound from '@/views/NotFound.vue'
 import SetupGame from '@/views/SetupGame.vue'
@@ -30,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/round/:round/bot/:bot',
     name: 'RoundBot',
     component: RoundBot
+  },
+  {
+    path: '/endOfEra1',
+    name: 'EndOfEra1',
+    component: EndOfEra1
   },
   {
     path: '/endOfGame',

@@ -45,10 +45,15 @@ export default defineComponent({
       if (this.player > 1) {
         return `/round/${this.round}/player/${this.player - 1}`
       }
-      else if (!this.navigationState.isFirstRound()) {
+      else if (this.navigationState.isFirstRound()) {
+        return ''
+      }
+      else if (this.navigationState.isStartRoundOfEra2()) {
+        return '/endOfEra1'
+      }
+      else {
         return `/round/${this.round - 1}/bot/${this.botCount}`
       }
-      return ''
     }
   },
   methods: {

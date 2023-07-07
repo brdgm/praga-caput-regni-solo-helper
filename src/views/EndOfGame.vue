@@ -11,8 +11,6 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import NavigationState from '@/util/NavigationState'
-import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/state'
 
 export default defineComponent({
@@ -22,10 +20,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const route = useRoute()
     const state = useStateStore()
-    const navigationState = new NavigationState(route, state)
-    const { botCount } = navigationState
+    const { botCount } = state.setup.playerSetup
     return { t, botCount }
   },
   computed: {

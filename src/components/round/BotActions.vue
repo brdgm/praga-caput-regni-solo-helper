@@ -100,7 +100,7 @@ export default defineComponent({
 .actionIcon.gain-seal-gold, .actionIcon.gain-seal-stone {
   width: 200px;
 }
-.actionIcon img, .actionTileSelectionIcon img {
+.actionIcon img, .actionTileSelectionIcon img, .productionTokenIcon img {
   filter: drop-shadow(2px 2px 3px #888);
   border-radius: 10px;
   margin: 0.25rem;

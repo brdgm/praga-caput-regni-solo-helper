@@ -80,13 +80,18 @@ export default defineComponent({
       if (this.bot < this.botCount) {
         this.$router.push(`/round/${this.round}/bot/${this.bot + 1}`)
       }
-      else if (!this.navigationState.isLastRound()) {
+      else if (this.navigationState.isLastRoundOfEra1()) {
+        const nextRound = roundManager.prepareNextRound(this.round + 1)
+        this.state.storeRound(nextRound)
+        this.$router.push('/endOfEra1')
+      }
+      else if (this.navigationState.isLastRoundOfEra2()) {
+        this.$router.push('/endOfGame')
+      }
+      else {
         const nextRound = roundManager.prepareNextRound(this.round + 1)
         this.state.storeRound(nextRound)
         this.$router.push(`/round/${this.round + 1}/player/1`)
-      }
-      else {
-        this.$router.push(`/endOfGame`)
       }
     },
     increaseProductionMine(mineTypes: MineType[]) {

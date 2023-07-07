@@ -25,7 +25,7 @@
     "8": "8th"
   },
   "ordinalOldest": {
-    "1": "1st.-oldest",
+    "1": "oldest",
     "2": "2nd-oldest",
     "3": "3rd-oldest"
   },
@@ -112,6 +112,11 @@
   },
   "sideBar": {
     "round": "Round"
+  },
+  "endOfEra1": {
+    "title": "End of Era 1",
+    "info1": "Remove the three rows of Era I hex tiles.",
+    "info2": "Replace their stacks with the Era II stacks and deal out new hex tiles."
   },
   "endOfGame": {
     "title": "End of Game",
