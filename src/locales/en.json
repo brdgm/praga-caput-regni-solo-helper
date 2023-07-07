@@ -46,7 +46,7 @@
       "productionTokenSet": "Use only this set of production tokens:",
       "productionTokenAll": "Use all production tokens.",
       "botPawnPlaza": "Place the pawn figure in Peter Parlers color on a plaza of your choice. This is where Peter Parler is planning to build. | For each Parler Bot, place the pawn in its color on a (different) plaza of your choice. This is where the bots are planning to build.",
-      "noOtherComponents": "Parler does not need a player board or other components."
+      "noOtherComponents": "Parler does not need a player board."
     }
   },
   "roundPlayer": {

@@ -46,7 +46,7 @@
       "productionTokenSet": "Verwende diese Produktionsplättchen:",
       "productionTokenAll": "Verwende alle Produktionsplättchen.",
       "botPawnPlaza": "Stelle die Königswegfigur in Peter Parlers Farbe auf einen beliebigen Marktplatz. Hier plant Peter Parler als nächstes zu bauen. | Stelle für jeden Parler Bot die Königswegfigur in seiner Farbe auf einen beliebigen (unterschiedlichen) Marktplatz. Hier planen die Parler Bots als nächstes zu bauen.",
-      "noOtherComponents": "Parler benötigt kein Spieltableau und keine weiteren Komponenten."
+      "noOtherComponents": "Parler benötigt kein Spieltableau."
     }
   },
   "roundPlayer": {
