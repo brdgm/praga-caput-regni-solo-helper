@@ -4,6 +4,12 @@
   <p class="mt-4" v-html="t('endOfGame.info1')"></p>
   <p v-html="t('endOfGame.info2')"></p>
 
+  <h4 class="mt-4" v-html="t('endOfGame.scoringGoals.title')"></h4>
+  <ul>
+    <li v-for="level of 8" :key="level" v-html="t(`endOfGame.scoringGoals.level${level}`)"></li>
+  </ul>
+  <p class="small" v-html="t('endOfGame.scoringGoals.credits')"></p>
+  
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="endGame"/>
 </template>
 

@@ -121,7 +121,19 @@
   "endOfGame": {
     "title": "End of Game",
     "info1": "Score your points following the rules.",
-    "info2": "Anything over 140 points is a good score."
+    "info2": "Anything over 140 points is a good score.",
+    "scoringGoals": {
+      "title": "Scoring Goals",
+      "level1": "0-99 Indentured Servant",
+      "level2": "100+ Bricklayer",
+      "level3": "120+ Site Inspector of Bohemia",
+      "level4": "140+ Civil Engineer of Bohemia",
+      "level5": "160+ Surveyor of Bohemia",
+      "level6": "180+ Honor of the University of Prague",
+      "level7": "200+ Order of Knight of the Cross with the Red Star",
+      "level8": "220+ Grand Architect of Bohemia",
+      "credits": "Scoring Goals provided by <a href='https://boardgamegeek.com/thread/3058292/article/42073133#42073133' target='_blank' rel='noopener'>Kenshiro_</a>."
+    }
   },
   "notfound": {
     "title": "Not Found"
