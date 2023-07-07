@@ -1,0 +1,64 @@
+<template>
+  <AppIcon class="actionIcon" :class="{[action]:true}"
+      type="action" :name="action" extension="jpg" :help="true"
+      data-bs-target="#gainSealStoneModal" data-bs-toggle="modal"/>
+
+  <ModalDialog id="gainSealStoneModal" :title="t('roundBot.gainSealStone.title')">
+    <template #body>
+      <p>
+        <span v-html="t('roundBot.gainSealStone.seal')"></span><br/>
+        <AppIcon class="sealIcon" type="seal" name="stone"/>
+      </p>
+      <p>
+        <span v-html="t('roundBot.gainSealStone.seal6Points')"></span><br/>
+        <AppIcon class="sealIcon" type="seal" name="6-points"/>
+      </p>
+    </template>
+  </ModalDialog>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+import { useI18n } from 'vue-i18n'
+import AppIcon from '../../structure/AppIcon.vue'
+import Action from '@/services/enum/Action'
+import { BotRound } from '@/store/state'
+import NavigationState from '@/util/NavigationState'
+import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
+
+export default defineComponent({
+  name: 'GainSealStone',
+  setup() {
+    const { t } = useI18n()
+    return { t }
+  },
+  components: {
+    AppIcon,
+    ModalDialog
+  },
+  props: {
+    action: {
+      type: Object as PropType<Action>,
+      required: true
+    },
+    botRound: {
+      type: Object as PropType<BotRound>,
+      required: true
+    },
+    navigationState: {
+      type: NavigationState,
+      required: true
+    }
+  }
+})
+</script>
+
+<style lang="scss">
+.sealIcon {
+  width: 80px;
+}
+.sealIcon img {
+  filter: drop-shadow(2px 2px 3px #888);
+  border-radius: 5px;
+}
+</style>
