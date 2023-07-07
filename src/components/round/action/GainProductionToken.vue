@@ -25,6 +25,7 @@ import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
 import rollDiceDifferentValue from 'brdgm-commons/src/util/random/rollDiceDifferentValue'
+import MineType from '@/services/enum/MineType'
 
 export default defineComponent({
   name: 'GainProductionToken',
@@ -36,6 +37,9 @@ export default defineComponent({
     AppIcon,
     ModalDialog
   },
+  emits: {
+    increaseProductionMine: (_mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   data() {
     return {
       tokenNumber: 0
@@ -43,7 +47,7 @@ export default defineComponent({
   },
   props: {
     action: {
-      type: Object as PropType<Action>,
+      type: String as PropType<Action>,
       required: true
     },
     botRound: {
