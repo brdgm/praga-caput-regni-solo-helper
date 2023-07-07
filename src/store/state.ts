@@ -61,6 +61,7 @@ export interface BotRound {
   wallTilePositionAdvance?: number
   buildingTilePosition: number
   buildingTilePositionAdvance?: number
+  productionTokensClaimed?: number
 }
 export interface CardDeckPersistence {
   pile: string[]

@@ -17,35 +17,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../../structure/AppIcon.vue'
 import Action from '@/services/enum/Action'
-import { BotRound, useStateStore } from '@/store/state'
+import { BotRound } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
-import rollDice from 'brdgm-commons/src/util/random/rollDice'
 import rollDiceDifferentValue from 'brdgm-commons/src/util/random/rollDiceDifferentValue'
+import MineType from '@/services/enum/MineType'
 
 export default defineComponent({
   name: 'GainProductionToken',
   setup() {
     const { t } = useI18n()
-
-    const state = useStateStore()
-    const totalPlayerCount = state.setup.playerSetup.playerCount + state.setup.playerSetup.botCount
-    const productionTokenCountTotal = totalPlayerCount * 2
-    const tokenNumber = ref(rollDice(productionTokenCountTotal))
-
-    return { t, productionTokenCountTotal, tokenNumber }
+    return { t }
   },
   components: {
     AppIcon,
     ModalDialog
   },
+  emits: {
+    increaseProductionMine: (_mineTypes: MineType[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
+  data() {
+    return {
+      tokenNumber: 0
+    }
+  },
   props: {
     action: {
-      type: Object as PropType<Action>,
+      type: String as PropType<Action>,
       required: true
     },
     botRound: {
@@ -59,8 +61,11 @@ export default defineComponent({
   },
   methods: {
     reroll() : void {
-      this.tokenNumber = rollDiceDifferentValue(this.productionTokenCountTotal, this.tokenNumber)
+      this.tokenNumber = rollDiceDifferentValue(this.navigationState.maximumProductionTokensLeft, this.tokenNumber)
     }
+  },
+  beforeMount() {
+    this.reroll()
   }
 })
 </script>
@@ -68,6 +73,9 @@ export default defineComponent({
 <style lang="scss">
 .productionTokenIcon {
   width: 80px;
+  @media (max-width: 600px) {
+    width: 60px;
+  }
 }
 .tokenNumber {
   display: inline-block;

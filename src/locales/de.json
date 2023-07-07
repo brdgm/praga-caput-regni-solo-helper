@@ -46,7 +46,7 @@
       "productionTokenSet": "Verwende diese Produktionsplättchen:",
       "productionTokenAll": "Verwende alle Produktionsplättchen.",
       "botPawnPlaza": "Stelle die Königswegfigur in Peter Parlers Farbe auf einen beliebigen Marktplatz. Hier plant Peter Parler als nächstes zu bauen. | Stelle für jeden Parler Bot die Königswegfigur in seiner Farbe auf einen beliebigen (unterschiedlichen) Marktplatz. Hier planen die Parler Bots als nächstes zu bauen.",
-      "noOtherComponents": "Parler benötigt kein Spieltableau und keine weiteren Komponenten."
+      "noOtherComponents": "Parler benötigt kein Spieltableau."
     }
   },
   "roundPlayer": {
@@ -121,7 +121,19 @@
   "endOfGame": {
     "title": "Spielende",
     "info1": "Zähle deine Punkte gemäß der Spielregeln zusammen.",
-    "info2": "Alles über 140 Punkte ist ein gutes Ergebnis."
+    "info2": "Alles über 140 Punkte ist ein gutes Ergebnis.",
+    "scoringGoals": {
+      "title": "Siegpunkt-Ziele",
+      "level1": "0-99 Schuldknecht",
+      "level2": "100+ Maurer",
+      "level3": "120+ Bauinspektor von Böhmen",
+      "level4": "140+ Bauingenieur in Böhmen",
+      "level5": "160+ Böhmischer Landvermesser",
+      "level6": "180+ Ehrentitel der Universität Prag",
+      "level7": "200+ Ritterorden des Kreuzes mit dem roten Stern",
+      "level8": "220+ Großer Architekt von Böhmen",
+      "credits": "Siegpunkt-Ziele definiert von <a href='https://boardgamegeek.com/thread/3058292/article/42073133#42073133' target='_blank' rel='noopener'>Kenshiro_</a>."
+    }
   },
   "notfound": {
     "title": "Nicht gefunden"

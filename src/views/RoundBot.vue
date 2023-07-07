@@ -76,23 +76,26 @@ export default defineComponent({
       const roundManager = new RoundManager(this.state)
       if (this.botRound) {
         roundManager.advanceTilePosition(this.botRound)
+        roundManager.storeClaimedProductionTokens(this.botRound, new MineManager(this.botRound).getProductionGainActions());
       }
       if (this.bot < this.botCount) {
         this.$router.push(`/round/${this.round}/bot/${this.bot + 1}`)
       }
       else if (this.navigationState.isLastRoundOfEra1()) {
-        const nextRound = roundManager.prepareNextRound(this.round + 1)
-        this.state.storeRound(nextRound)
+        this.prepareForNextRound(roundManager)
         this.$router.push('/endOfEra1')
       }
       else if (this.navigationState.isLastRoundOfEra2()) {
         this.$router.push('/endOfGame')
       }
       else {
-        const nextRound = roundManager.prepareNextRound(this.round + 1)
-        this.state.storeRound(nextRound)
+        this.prepareForNextRound(roundManager)
         this.$router.push(`/round/${this.round + 1}/player/1`)
       }
+    },
+    prepareForNextRound(roundManager : RoundManager)  {
+      const nextRound = roundManager.prepareNextRound(this.round + 1)
+      this.state.storeRound(nextRound)
     },
     increaseProductionMine(mineTypes: MineType[]) {
       if (this.botRound) {

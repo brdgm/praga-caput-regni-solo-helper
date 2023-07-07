@@ -19,8 +19,8 @@
     "2": "2nd",
     "3": "3rd",
     "4": "4th",
-    "5": "4th",
-    "6": "5th",
+    "5": "5th",
+    "6": "6th",
     "7": "7th",
     "8": "8th"
   },
@@ -46,7 +46,7 @@
       "productionTokenSet": "Use only this set of production tokens:",
       "productionTokenAll": "Use all production tokens.",
       "botPawnPlaza": "Place the pawn figure in Peter Parlers color on a plaza of your choice. This is where Peter Parler is planning to build. | For each Parler Bot, place the pawn in its color on a (different) plaza of your choice. This is where the bots are planning to build.",
-      "noOtherComponents": "Parler does not need a player board or other components."
+      "noOtherComponents": "Parler does not need a player board."
     }
   },
   "roundPlayer": {
@@ -121,7 +121,19 @@
   "endOfGame": {
     "title": "End of Game",
     "info1": "Score your points following the rules.",
-    "info2": "Anything over 140 points is a good score."
+    "info2": "Anything over 140 points is a good score.",
+    "scoringGoals": {
+      "title": "Scoring Goals",
+      "level1": "0-99 Indentured Servant",
+      "level2": "100+ Bricklayer",
+      "level3": "120+ Site Inspector of Bohemia",
+      "level4": "140+ Civil Engineer of Bohemia",
+      "level5": "160+ Surveyor of Bohemia",
+      "level6": "180+ Honor of the University of Prague",
+      "level7": "200+ Order of Knight of the Cross with the Red Star",
+      "level8": "220+ Grand Architect of Bohemia",
+      "credits": "Scoring Goals provided by <a href='https://boardgamegeek.com/thread/3058292/article/42073133#42073133' target='_blank' rel='noopener'>Kenshiro_</a>."
+    }
   },
   "notfound": {
     "title": "Not Found"

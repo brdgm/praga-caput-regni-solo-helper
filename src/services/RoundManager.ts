@@ -100,6 +100,16 @@ export default class RoundManager {
     }
   }
 
+  /**
+   * Stores the number of claimed production tokens this round.
+   * @param botRound Bot round
+   * @param actions Executed actions
+   */
+  public storeClaimedProductionTokens(botRound: BotRound, actions: Action[]) {
+    const claimedProductionTokens = actions.filter(action => action == Action.GAIN_PRODUCTION_TOKEN).length
+    botRound.productionTokensClaimed = claimedProductionTokens > 0 ? claimedProductionTokens : undefined
+  }
+
 }
 
 function randomUniqueTilePosition(botRounds: BotRound[], getPosition: (botRound: BotRound) => number) : number {
