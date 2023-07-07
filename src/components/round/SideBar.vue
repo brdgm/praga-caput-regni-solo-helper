@@ -86,9 +86,13 @@ export default defineComponent({
   width: 160px;
   margin-right: -12px;
   margin-left: 20px;
+  margin-bottom: 10px;
   padding-right: 10px;
   .mineIcon {
     width: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    width: 130px;
   }
 }
 </style>

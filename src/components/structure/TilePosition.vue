@@ -47,5 +47,8 @@ export default defineComponent({
 }
 .hex {
   width: v-bind(hexWidth);
+  @media (max-width: 600px) {
+    width: calc( v-bind(hexWidth) / 3 * 2);
+  }
 }
 </style>

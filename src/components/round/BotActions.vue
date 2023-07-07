@@ -93,16 +93,26 @@ export default defineComponent({
 <style lang="scss">
 .actionIcon {
   width: 300px;
+  @media (max-width: 600px) {
+    width: 200px;
+  }
 }
 .actionIcon.increase-production-stone, .actionIcon.increase-production-gold, .actionTileSelectionIcon {
   width: 120px;
+  @media (max-width: 600px) {
+    width: 80px;
+  }
 }
 .actionIcon.gain-seal-gold, .actionIcon.gain-seal-stone {
   width: 200px;
+  @media (max-width: 600px) {
+    width: 140px;
+  }
 }
 .actionIcon img, .actionTileSelectionIcon img, .productionTokenIcon img {
   filter: drop-shadow(2px 2px 3px #888);
   border-radius: 10px;
   margin: 0.25rem;
 }
+
 </style>

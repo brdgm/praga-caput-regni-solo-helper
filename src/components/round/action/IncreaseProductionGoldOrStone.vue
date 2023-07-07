@@ -124,10 +124,18 @@ export default defineComponent({
   vertical-align: top;
   min-width: 110px;
   text-align: center;
+  @media (max-width: 600px) {
+    min-width: 80px;
+  }
   .chooseButton {
     position: absolute;
     left: 25px;
     top: 85px;
+    @media (max-width: 600px) {
+      font-size: smaller;
+      left: 9px;
+      top: 60px;
+    }
   }
 }
 .labelOr {

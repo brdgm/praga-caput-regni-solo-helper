@@ -73,6 +73,9 @@ export default defineComponent({
 <style lang="scss">
 .productionTokenIcon {
   width: 80px;
+  @media (max-width: 600px) {
+    width: 60px;
+  }
 }
 .tokenNumber {
   display: inline-block;
