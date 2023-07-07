@@ -15,6 +15,7 @@
       <hr/>
       <p v-html="t('roundBot.constructBuilding.info5')"></p>
       <p v-html="t('roundBot.constructBuilding.info6')"></p>
+      <AppIcon name="building-move-pawn" extension="jpg" class="building-move-pawn"/>
     </template>
   </ModalDialog>
 
@@ -68,5 +69,8 @@ export default defineComponent({
 .tilePosition {
   margin-left: 20px;
   margin-top: 10px;
+}
+.building-move-pawn {
+  width: 500px;
 }
 </style>
