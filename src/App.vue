@@ -42,7 +42,7 @@
         <dt>Version</dt>
         <dd>{{buildNumber}}</dd>
         <dt>Source Code (Apache-2.0 License)</dt>
-        <dd><a href="https://github.com/brdgm/autobahn-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/autobahn-solo-helper</a></dd>
+        <dd><a href="https://github.com/brdgm/praga-caput-regni-solo-helper" target="_blank" rel="noopener">https://github.com/brdgm/praga-caput-regni-solo-helper</a></dd>
       </dl>
     </template>
   </ModalDialog>
