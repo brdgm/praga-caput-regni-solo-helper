@@ -15,7 +15,7 @@ describe('services/CardDeck', () => {
     expect(persistence.discard.length, 'discard size').to.eq(0)
   })
 
-  it('new', () => {
+  it('draw', () => {
     const deck = CardDeck.fromPersistence({
       pile: ['1','3','4'],
       discard: ['2','5']
