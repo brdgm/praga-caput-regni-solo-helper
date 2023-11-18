@@ -57,7 +57,8 @@ export default defineComponent({
 <style>
 a[href='#peterParlerModal'] {
   color: #000;
-  text-decoration: underline dotted;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }
 </style>
 <style lang="scss" scoped>
