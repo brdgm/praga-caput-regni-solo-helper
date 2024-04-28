@@ -18,25 +18,25 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { useI18n } from 'vue-i18n';
-import AppIcon from '../structure/AppIcon.vue';
-import { BotRound } from '@/store/state';
-import Card from '@/services/Card';
-import CardDeck from '@/services/CardDeck';
-import ConstructBuilding from './action/ConstructBuilding.vue';
-import IncreaseProductionGold from './action/IncreaseProductionGold.vue';
-import IncreaseProductionStone from './action/IncreaseProductionStone.vue';
-import IncreaseProductionGoldOrStone from './action/IncreaseProductionGoldOrStone.vue';
-import TakeUpgradeTile from './action/TakeUpgradeTile.vue';
-import TakeWallTile from './action/TakeWallTile.vue';
-import GainProductionToken from './action/GainProductionToken.vue';
-import GainSealGold from './action/GainSealGold.vue';
-import GainSealStone from './action/GainSealStone.vue';
-import NavigationState from '@/util/NavigationState';
+import { useI18n } from 'vue-i18n'
+import AppIcon from '../structure/AppIcon.vue'
+import { BotRound } from '@/store/state'
+import Card from '@/services/Card'
+import CardDeck from '@/services/CardDeck'
+import ConstructBuilding from './action/ConstructBuilding.vue'
+import IncreaseProductionGold from './action/IncreaseProductionGold.vue'
+import IncreaseProductionStone from './action/IncreaseProductionStone.vue'
+import IncreaseProductionGoldOrStone from './action/IncreaseProductionGoldOrStone.vue'
+import TakeUpgradeTile from './action/TakeUpgradeTile.vue'
+import TakeWallTile from './action/TakeWallTile.vue'
+import GainProductionToken from './action/GainProductionToken.vue'
+import GainSealGold from './action/GainSealGold.vue'
+import GainSealStone from './action/GainSealStone.vue'
+import NavigationState from '@/util/NavigationState'
 import ModalDialog from 'brdgm-commons/src/components/structure/ModalDialog.vue'
-import MineType from '@/services/enum/MineType';
-import Action from '@/services/enum/Action';
-import MineManager from '@/services/MineManager';
+import MineType from '@/services/enum/MineType'
+import Action from '@/services/enum/Action'
+import MineManager from '@/services/MineManager'
 
 export default defineComponent({
   name: 'BotActions',

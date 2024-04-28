@@ -10,9 +10,9 @@
 
 <script lang="ts">
 import { PropType, defineComponent } from 'vue'
-import TileHex from './TileHex.vue';
-import TileType from '@/services/enum/TileType';
-import PlayerColor from '@/services/enum/PlayerColor';
+import TileHex from './TileHex.vue'
+import TileType from '@/services/enum/TileType'
+import PlayerColor from '@/services/enum/PlayerColor'
 
 export default defineComponent({
   name: 'TilePosition',

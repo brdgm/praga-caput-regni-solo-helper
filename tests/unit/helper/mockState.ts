@@ -1,5 +1,5 @@
-import PlayerColor from '@/services/enum/PlayerColor';
-import { Round, State } from '@/store/state';
+import PlayerColor from '@/services/enum/PlayerColor'
+import { Round, State } from '@/store/state'
 
 export default function (params?: MockStateParams) : State {  
   return {
