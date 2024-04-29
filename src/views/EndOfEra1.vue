@@ -19,14 +19,12 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
-import { RouterLink } from 'vue-router'
 import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'EndOfEra1',
   components: {
     FooterButtons,
-    RouterLink,
     AppIcon
   },
   setup() {
