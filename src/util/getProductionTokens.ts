@@ -1,4 +1,4 @@
-import ProductionToken from "@/services/enum/ProductionToken";
+import ProductionToken from '@/services/enum/ProductionToken'
 
 /**
  * Get production tokens for board setup depending on player count.

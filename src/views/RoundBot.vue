@@ -76,7 +76,7 @@ export default defineComponent({
       const roundManager = new RoundManager(this.state)
       if (this.botRound) {
         roundManager.advanceTilePosition(this.botRound)
-        roundManager.storeClaimedProductionTokens(this.botRound, new MineManager(this.botRound).getProductionGainActions());
+        roundManager.storeClaimedProductionTokens(this.botRound, new MineManager(this.botRound).getProductionGainActions())
       }
       if (this.bot < this.botCount) {
         this.$router.push(`/round/${this.round}/bot/${this.bot + 1}`)

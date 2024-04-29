@@ -14,7 +14,7 @@ export default function(playerColor: PlayerColor) : string {
     case PlayerColor.PURPLE:
       return "#b204e3"
     case PlayerColor.RED:
-      return "#b91729";
+      return "#b91729"
     default:
       throw new Error(`Invalid player color: ${playerColor}.`)
   }

@@ -37,9 +37,9 @@ export default defineComponent({
     TilePosition
   },
   setup() {
-    const { t } = useI18n();
+    const { t } = useI18n()
     const playerSetup = useStateStore().setup.playerSetup
-    return { t, playerSetup };
+    return { t, playerSetup }
   },
   props: {
     navigationState: {
