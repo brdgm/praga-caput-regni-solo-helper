@@ -1,6 +1,6 @@
 import { BotRound, Round, State } from '@/store/state'
 import CardDeck from './CardDeck'
-import rollDice from 'brdgm-commons/src/util/random/rollDice'
+import rollDice from '@brdgm/brdgm-commons/src/util/random/rollDice'
 import Action from './enum/Action'
 import advanceTilePosition from '@/util/advanceTilePosition'
 import MineType from './enum/MineType'
