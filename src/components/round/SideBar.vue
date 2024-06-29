@@ -31,7 +31,7 @@ import MineType from '@/services/enum/MineType'
 import MineManager from '@/services/MineManager'
 
 export default defineComponent({
-  name: "SideBar",
+  name: 'SideBar',
   components: {
     AppIcon,
     TilePosition
