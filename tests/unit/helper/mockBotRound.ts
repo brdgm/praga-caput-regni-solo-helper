@@ -1,4 +1,4 @@
-import { BotRound } from '@/store/state';
+import { BotRound } from '@/store/state'
 
 export default function (params?: MockBotRoundParams) : BotRound {  
   return {

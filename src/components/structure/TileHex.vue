@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts">
-import PlayerColor from '@/services/enum/PlayerColor';
-import TileType from '@/services/enum/TileType';
-import getPlayerColorCode from '@/util/getPlayerColorCode';
-import getTileColorCode from '@/util/getTileColorCode';
+import PlayerColor from '@/services/enum/PlayerColor'
+import TileType from '@/services/enum/TileType'
+import getPlayerColorCode from '@/util/getPlayerColorCode'
+import getTileColorCode from '@/util/getTileColorCode'
 import { PropType, defineComponent } from 'vue'
 
 export default defineComponent({

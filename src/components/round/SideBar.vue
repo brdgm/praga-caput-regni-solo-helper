@@ -17,29 +17,29 @@
 </template>
 
 <script lang="ts">
-import NavigationState from '@/util/NavigationState';
+import NavigationState from '@/util/NavigationState'
 import { defineComponent } from 'vue'
-import { useI18n } from 'vue-i18n';
-import AppIcon from '../structure/AppIcon.vue';
-import TilePosition from '../structure/TilePosition.vue';
-import TileType from '@/services/enum/TileType';
-import getAllEnumValues from 'brdgm-commons/src/util/enum/getAllEnumValues';
-import { BotRound, useStateStore } from '@/store/state';
-import PlayerColor from '@/services/enum/PlayerColor';
+import { useI18n } from 'vue-i18n'
+import AppIcon from '../structure/AppIcon.vue'
+import TilePosition from '../structure/TilePosition.vue'
+import TileType from '@/services/enum/TileType'
+import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
+import { BotRound, useStateStore } from '@/store/state'
+import PlayerColor from '@/services/enum/PlayerColor'
 import advanceTilePosition from '@/util/advanceTilePosition'
-import MineType from '@/services/enum/MineType';
-import MineManager from '@/services/MineManager';
+import MineType from '@/services/enum/MineType'
+import MineManager from '@/services/MineManager'
 
 export default defineComponent({
-  name: "SideBar",
+  name: 'SideBar',
   components: {
     AppIcon,
     TilePosition
   },
   setup() {
-    const { t } = useI18n();
+    const { t } = useI18n()
     const playerSetup = useStateStore().setup.playerSetup
-    return { t, playerSetup };
+    return { t, playerSetup }
   },
   props: {
     navigationState: {

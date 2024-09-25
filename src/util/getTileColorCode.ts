@@ -1,4 +1,4 @@
-import TileType from "@/services/enum/TileType";
+import TileType from '@/services/enum/TileType'
 
 /**
  * Get color code for tile type.
