@@ -15,16 +15,16 @@ export default class NavigationState {
   readonly maximumProductionTokensLeft : number
 
   public constructor(route : RouteLocation, state: State) {    
-    this.round = parseInt(route.params['round'] as string)
+    this.round = Number.parseInt(route.params['round'] as string)
     this.allBotRounds = this.getAllBotRounds(state, this.round)
     if (route.name == 'RoundPlayer') {
-      this.player = parseInt(route.params['player'] as string)
+      this.player = Number.parseInt(route.params['player'] as string)
     }
     else {
       this.player = 0
     }
     if (route.name == 'RoundBot') {
-      this.bot = parseInt(route.params['bot'] as string)
+      this.bot = Number.parseInt(route.params['bot'] as string)
       this.botRound = this.allBotRounds.find(item => item.bot == this.bot)
     }
     else {

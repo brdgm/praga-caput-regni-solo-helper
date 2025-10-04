@@ -5,7 +5,7 @@ import TileType from '@/services/enum/TileType'
  * @param tileType Tile type
  * @returns Color code
  */
-export default function(tileType: TileType) : string {
+export default function getTileColorCode(tileType: TileType) : string {
   switch (tileType) {
     case TileType.UPGRADE:
       return "#eccd7d"

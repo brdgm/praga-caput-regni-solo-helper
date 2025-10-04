@@ -5,7 +5,7 @@ import ProductionToken from '@/services/enum/ProductionToken'
  * @param playerCount Player count
  * @returns Production tokens. Returns empty array if player count is not 2 or 3 (use all tokens for 4 players)
  */
-export default function(playerCount: number) : ProductionToken[] {
+export default function getProductionTokens(playerCount: number) : ProductionToken[] {
   switch (playerCount) {
     case 2:
       return [ProductionToken.TWO_POINT, ProductionToken.TWO_POINT, ProductionToken.POINT_GOLD, ProductionToken.POINT_STONE]
