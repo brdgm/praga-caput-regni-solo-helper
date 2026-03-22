@@ -1,6 +1,6 @@
 import { BotRound } from '@/store/state'
 
-export default function (params?: MockBotRoundParams) : BotRound {  
+export default function mockBotRound(params?: MockBotRoundParams) : BotRound {  
   return {
     round: params?.round ?? 1,
     bot: params?.bot ?? 1,

@@ -34,7 +34,7 @@
     "players": {
       "title": "Spieler",
       "playerCount": "Menschliche Spieler",
-      "playerCountItem": "{count} Spieler",
+      "playerCountItem": "{count} Spieler | {count} Spieler",
       "playerColor": "Spieler-Farbe | Spieler {index} Farbe",
       "botCount": "Parler Bots",
       "botCountItem": "{count} Parler Bot | {count} Parler Bots (experimentell)",
