@@ -1,0 +1,162 @@
+{
+  "gameTitle": "왕국의 수도 프라하",
+  "home": {
+    "title": "왕국의 수도 프라하 솔로 헬퍼",
+    "play1": "<a href='#peterParlerModal' data-bs-toggle='modal'>페터 파를러</a>와 대결하세요. <a href='https://boardgamegeek.com/boardgame/308765/praga-caput-regni' target='_blank' rel='noopener'><b>왕국의 수도 프라하</b></a>의 솔로 모드 상대입니다.",
+    "play2": "이 헬퍼 앱은 카드 덱을 대체하고 앱 내에서 도움을 제공합니다. 파를러 가족(최대 3개의 봇)과 대결할 수 있습니다.",
+    "play3": "페터 파를러는 점수를 얻지 않지만 다른 플레이어들을 시뮬레이션합니다. 자신의 점수를 넘어보세요!",
+    "peterParler1": "페터 파를러(체코어로 Petr Parléř)는 카를 4세와 그의 아들들 통치 시기에 살았던 체코-독일 석공이었습니다. 1333년경 독일에서 태어나 1399년 프라하에서 세상을 떠났습니다.",
+    "peterParler2": "파를러는 성 비투스 대성당, 카를교, 프라하 구시가의 다양한 시민 건물들, 쿠트나 호라의 성 바르바라 교회 등 이 시대의 가장 유명한 건축물들을 작업했습니다.",
+    "feedback": "토론 및 피드백:"
+  },
+  "botName": {
+    "bot1": "페터 파를러",
+    "bot2": "요한 파를러 (소)",
+    "bot3": "벤첼 파를러"
+  },
+  "ordinal": {
+    "1": "1번째",
+    "2": "2번째",
+    "3": "3번째",
+    "4": "4번째",
+    "5": "5번째",
+    "6": "6번째",
+    "7": "7번째",
+    "8": "8번째"
+  },
+  "ordinalOldest": {
+    "1": "가장 오래된",
+    "2": "2번째로 오래된",
+    "3": "3번째로 오래된"
+  },
+  "setup": {
+    "title": "게임 설정",
+    "players": {
+      "title": "플레이어",
+      "playerCount": "인간 플레이어",
+      "playerCountItem": "플레이어 {count}명 | 플레이어 {count}명",
+      "playerColor": "플레이어 색상 | 플레이어 {index} 색상",
+      "botCount": "파를러 봇",
+      "botCountItem": "파를러 봇 {count}개 | 파를러 봇 {count}개 (실험적)",
+      "botColor": "{name} 색상"
+    },
+    "board": {
+      "title": "보드 설정",
+      "setupForPlayers": "<strong>{playerCount}명용</strong> 게임 규칙에 따라 게임을 설정하세요",
+      "productionTokenSet": "이 생산 토큰 세트만 사용하세요:",
+      "productionTokenAll": "모든 생산 토큰을 사용하세요.",
+      "botPawnPlaza": "페터 파를러 색상의 말을 원하는 광장에 놓으세요. 여기가 페터 파를러가 건설을 계획하는 곳입니다. | 각 파를러 봇의 말을 해당 색상으로 원하는 (다른) 광장에 놓으세요. 여기가 봇들이 건설을 계획하는 곳입니다.",
+      "noOtherComponents": "파를러는 플레이어 보드가 필요하지 않습니다."
+    }
+  },
+  "roundPlayer": {
+    "title": "플레이어 | 플레이어 {player}",
+    "takeTurn": "턴을 진행하세요."
+  },
+  "roundBot": {
+    "takeUpgradeTile": {
+      "title": "업그레이드 타일 가져오기",
+      "info1": "<strong>{ordinal} 업그레이드 타일을 가져와서</strong> 해당 스택의 맨 아래로 되돌려 놓으세요.",
+      "info2": "새로운 타일로 교체하세요."
+    },
+    "takeWallTile": {
+      "title": "성벽 타일 가져오기",
+      "info1": "<strong>{ordinal} 성벽 타일을 가져와서</strong> 해당 스택의 맨 아래로 되돌려 놓으세요.",
+      "info2": "새로운 타일로 교체하세요."
+    },
+    "constructBuilding": {
+      "title": "건물 건설",
+      "info1": "<strong>{ordinal} 건물 타일을 가져와서</strong> 말이 표시된 광장에 인접한 메인 보드에 놓으세요.",
+      "info2": "타일에 파란색 모서리가 있다면, 가능한 경우 파란색 모서리끼리 맞도록 놓아야 합니다. 그렇지 않으면 원하는 대로 놓을 수 있습니다.",
+      "info3": "새 건물에 큐브를 놓을 공간이 있다면 파를러의 큐브 중 하나를 놓으세요.",
+      "info4": "해당 광장에서 건설할 수 있는 마지막 건물이라면, 일반적인 규칙에 따라 0개, 1개 또는 2개의 광장 보너스를 즉시 받습니다. 파를러의 큐브는 당신의 큐브와 경쟁하지만, 파를러 자신은 광장 보상을 받지 않습니다.",
+      "info5": "<strong>말을 시계방향으로 이동</strong>시키세요. 아래 예시와 같습니다. 이동할 칸 수는 건물 타일에 인쇄된 비용으로 결정됩니다. 자원 비용을 합산하세요. <i>예를 들어, [-금화 2] [-석재 2]의 비용은 말을 4칸 이동시킵니다.</i>",
+      "info6": "말이 이미 평가된 광장에 도달하면, 새 건물을 위한 여유가 있는 광장에 도달할 때까지 시계방향으로 계속 전진시키세요. 마찬가지로, 당신의 턴에서 표시된 광장의 마지막 건물을 건설했다면, 파를러가 여전히 건설할 수 있는 다음 광장으로 말을 전진시키세요."
+    },
+    "increaseProductionGold": {
+      "title": "금화 생산 증가",
+      "info1": "금화 생산이 1 증가합니다."
+    },
+    "increaseProductionStone": {
+      "title": "석재 생산 증가",
+      "info1": "석재 생산이 1 증가합니다."
+    },
+    "increaseProductionGoldOrStone": {
+      "or": "또는",
+      "choose": "선택",
+      "chooseBoth": "둘 다",
+      "title": "생산 증가",
+      "info1": "<strong>더 많이 가지고 있는</strong> 것에 따라 금광 또는 채석장을 증가시킬지 선택하세요.",
+      "info2": "금광 수와 채석장 수가 같다면 두 트랙 모두 증가합니다."
+    },
+    "gainProductionToken": {
+      "title": "생산 타일 획득",
+      "info1": "강에서 <strong>{ordinal} 생산 타일을</strong> 버리세요.",
+      "tokenNumber": "{ordinal} 버리기",
+      "reroll": "다시 굴리기"
+    },
+    "gainSealStone": {
+      "title": "석재 인장 획득",
+      "seal": "파를러가 이 인장을 획득합니다:",
+      "seal6Points": "이 인장을 당신이 이미 획득했다면, 대신 이 인장을 획득합니다 (사용 가능한 경우):"
+    },
+    "gainSealGold": {
+      "title": "금화 인장 획득",
+      "seal": "파를러가 이 인장을 획득합니다:",
+      "seal6Points": "이 인장을 당신이 이미 획득했다면, 대신 이 인장을 획득합니다 (사용 가능한 경우):"
+    },
+    "actionTileSelection": {
+      "title": "행동 타일 재활용",
+      "info1": "휠에서 <strong>{ordinal} 행동 타일을</strong> 가져와서, 휠을 시계방향으로 한 칸 돌린 후 빨간 구역 시작 부분의 빈 공간에 타일을 놓으세요."
+    }
+  },
+  "sideBar": {
+    "round": "라운드"
+  },
+  "endOfEra1": {
+    "title": "1시대 종료",
+    "info1": "1시대 육각 타일의 세 줄을 제거하세요.",
+    "info2": "해당 스택을 2시대 스택으로 교체하고 새로운 육각 타일을 배치하세요."
+  },
+  "endOfGame": {
+    "title": "게임 종료",
+    "info1": "규칙에 따라 점수를 계산하세요.",
+    "info2": "140점 이상이면 좋은 점수입니다.",
+    "scoringGoals": {
+      "title": "점수 목표",
+      "level1": "0-99 계약 하인",
+      "level2": "100+ 벽돌공",
+      "level3": "120+ 보헤미아 현장 감독관",
+      "level4": "140+ 보헤미아 토목 기사",
+      "level5": "160+ 보헤미아 측량사",
+      "level6": "180+ 프라하 대학교 명예",
+      "level7": "200+ 적십자 기사단 훈장",
+      "level8": "220+ 보헤미아 대건축가",
+      "credits": "점수 목표는 <a href='https://boardgamegeek.com/thread/3058292/article/42073133#42073133' target='_blank' rel='noopener'>Kenshiro_</a>에서 제공되었습니다."
+    }
+  },
+  "notfound": {
+    "title": "찾을 수 없음"
+  },
+  "action": {
+    "playGame": "게임 플레이",
+    "startGame": "게임 시작",
+    "next": "다음",
+    "nextRound": "다음 라운드",
+    "abortGame": "게임 중단",
+    "abortGameConfirm": "진행 중인 게임을 중단합니다 - 확실한가요?",
+    "endGame": "게임 종료",
+    "endGameConfirm": "이 게임을 종료하고 홈 화면으로 돌아갑니다 - 확실한가요?",
+    "cancel": "취소",
+    "backToHome": "홈으로 돌아가기",
+    "back": "뒤로",
+    "close": "닫기"
+  },
+  "footer": {
+    "credits": "크레딧"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "앱 새로고침",
+    "notice": "앱이 업데이트되었습니다 - 최신 버전을 사용하려면 새로고침하시겠습니까?"
+  }
+}
