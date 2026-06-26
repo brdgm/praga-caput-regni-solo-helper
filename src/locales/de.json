@@ -56,7 +56,7 @@
   "roundBot": {
     "takeUpgradeTile": {
       "title": "Aufwertungsplättchen nehmen",
-      "info1": "<strong>Nimm das {ordinal} Aufwertungplättchen</strong> und lege es zurück unter den zugehörigen Stapel.",
+      "info1": "<strong>Nimm das {ordinal} Aufwertungsplättchen</strong> und lege es zurück unter den zugehörigen Stapel.",
       "info2": "Lege ein neues Plättchen auf die freigewordene Position."
     },
     "takeWallTile": {
@@ -98,12 +98,12 @@
     "gainSealStone": {
       "title": "Erwerbe Stein-Siegel",
       "seal": "Parler erwirbt dieses Siegel:",
-      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen diesen Siegel (wenn verfügbar):"
+      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen dieses Siegel (wenn verfügbar):"
     },
     "gainSealGold": {
-      "title": "Erwerber Gold-Siegel",
+      "title": "Erwerbe Gold-Siegel",
       "seal": "Parler erwirbt dieses Siegel:",
-      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen diesen Siegel (wenn verfügbar):"
+      "seal6Points": "Wenn du das Siegel bereits erworben hast, erwirbt er anstelle dessen dieses Siegel (wenn verfügbar):"
     },
     "actionTileSelection": {
       "title": "Aktionsplättchen versetzen",
@@ -115,7 +115,7 @@
   },
   "endOfEra1": {
     "title": "Ende von Ära I",
-    "info1": "Entferne  die drei Reihen der Sechseckplättchen der Ära I.",
+    "info1": "Entferne die drei Reihen der Sechseckplättchen der Ära I.",
     "info2": "Ersetze ihre Stapel durch die der Ära II und lege neue Sechseckplättchen aus."
   },
   "endOfGame": {
